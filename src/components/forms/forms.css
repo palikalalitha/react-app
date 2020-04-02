@@ -1,0 +1,101 @@
+.navbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    /*height: 100px;*/
+    /*align-items: center;*/
+    /*justify-content: space-around;*/
+    background-color: black;
+    color: white;
+}
+
+.title {
+    margin: 15px;
+    color: white;
+}
+
+/*Greeting*/
+
+.greeting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box {
+    border: 1px solid black;
+    font-size: 18px;
+
+}
+
+.greet-btn {
+    border: 1px solid black;
+    height: 40px;
+    font-size: 20px;
+}
+
+/** {
+    */
+
+/*    border: 1px solid red;*/
+
+/*}*/
+
+.showMessage,
+.list-items {
+    display: flex;
+}
+
+.list-items {
+    justify-content: center
+}
+
+.desert,
+.cities {
+    list-style-type: none;
+}
+
+.header-desert {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+/*state */
+
+.select-box {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.state-submit-btn {
+    margin: 10px;
+}
+
+/*styles for disables compone*/
+
+.show-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    margin: 10px;
+}
+
+.hide-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid lightgrey;
+    margin: 10px;
+    color: lightgrey;
+}
+
+.disable-box {
+    text-align: center;
+    margin-top: 20px;
+}

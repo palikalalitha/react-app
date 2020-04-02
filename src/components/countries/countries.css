@@ -1,0 +1,51 @@
+.dark {
+    background-color: #2b3945;
+    color: white;
+}
+
+.light {
+    background-color: #fff;
+    color: black
+}
+
+.navBarDarkMode {
+    display: flex;
+    justify-content: space-between;
+    background-color: #3b4e5e;
+    color: white;
+    padding-left: 15px;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.navabarLightMode {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    box-shadow: 0 8px 6px -6px silver;
+}
+
+.countrycard {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filterBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchbarDarkMode {
+    border: none;
+    background-color: #3b4e5e;
+}
+
+.searchbarLightMode {
+    border: none;
+    background-color: #fff;
+
+}
+
+.theme {
+    display: flex;
+    align-items: center
+}

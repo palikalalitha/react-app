@@ -1,0 +1,64 @@
+.todo-wraper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px
+}
+
+.input-box {
+    box-shadow: 2px 3px 2px 2px grey;
+    margin-bottom: 10px
+}
+
+.text-box {
+    font-size: 20px;
+    text-align: center;
+    width: 500px;
+    border: none;
+
+}
+
+.checkbox {
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 30px
+}
+
+.close-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    font-size: 30px;
+    color: red;
+}
+
+.todo {
+    display: flex;
+    justify-content: center;
+
+}
+
+.true {
+    display: flex;
+    justify-content: space-between;
+}
+
+.false {
+    display: none
+}
+
+.footer {}
+
+.result-box {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.result-box:disabled {
+    font-size: 20px;
+    color: grey;
+    text-decoration: line-through;
+}

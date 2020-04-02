@@ -1,0 +1,77 @@
+.Running {
+    background-color: green;
+    width: 50px;
+    height: 30px;
+    color: white;
+    font-size: 12px;
+    border: none;
+}
+
+.Stopped {
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: red;
+    font-size: 12px;
+    border: none;
+}
+
+.car-warpper {
+    margin: 30px;
+
+}
+
+.car {
+    margin-left: 50px;
+
+}
+
+.add-car {
+    margin-left: 75%;
+    width: 100px;
+    height: 30px;
+    border: 1px solid blue;
+    background-color: blue;
+    font-size: 14px;
+    color: white;
+}
+
+.accelerate-btn {
+    margin-right: 50px;
+    width: 100px;
+    height: 25px;
+    color: blue;
+    font-size: 12px;
+    border: 1px solid blue;
+}
+
+.accelerate-btn:hover:enabled {
+    background-color: blue;
+    color: white
+}
+
+
+
+.break-btn {
+    margin-right: 50px;
+    width: 100px;
+    height: 25px;
+    color: red;
+    font-size: 12px;
+    border: 1px solid red;
+}
+
+.car-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-btn {
+    color: red;
+    font-size: 20px
+}
+
+.break-btn:hover:enabled {
+    background-color: red;
+    color: white
+}
