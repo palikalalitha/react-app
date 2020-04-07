@@ -1,47 +1,57 @@
-{
-  "name": "react-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "autoprefixer": "^9.7.5",
-    "babel-plugin-macros": "^2.8.0",
-    "postcss-cli": "^7.1.0",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
-    "tailwind.macro": "^1.0.0-alpha.10"
-  },
-  "scripts": {
-    "build:css": "postcss src/index.css -o src/styles/tailwind.css",
-    "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "tailwindcss": "^1.2.0"
-  }
-}
+           {
+             "name": "react-app",
+             "version": "0.1.0",
+             "private": true,
+             "dependencies": {
+               "@emotion/core": "^10.0.28",
+               "@emotion/styled": "^10.0.27",
+               "@testing-library/jest-dom": "^4.2.4",
+               "@testing-library/react": "^9.5.0",
+               "@testing-library/user-event": "^7.2.1",
+               "autoprefixer": "^9.7.5",
+               "babel-plugin-macros": "^2.8.0",
+               "mobx": "5.15.0",
+               "mobx-react": "6.1.4",
+               "postcss-cli": "^7.1.0",
+               "react": "^16.13.0",
+               "react-dom": "^16.13.0",
+               "react-router-dom": "^5.1.2",
+               "react-scripts": "3.4.0",
+               "tailwind.macro": "^1.0.0-alpha.10"
+             },
+             "scripts": {
+               "build:css": "postcss src/index.css -o src/styles/tailwind.css",
+               "watch:css": "postcss src/index.css -o src/styles/tailwind.css",
+               "start": "npm run watch:css & react-app-rewired start",
+               "build": "npm run build:css react-app-rewired build",
+               "test": "react-app-rewired test",
+               "eject": "react-app-rewired eject",
+               "deploy": "export PUBLIC_URL=/2019/$C9_USER/react && npm run build && ./deploy.sh"
+             },
+             "eslintConfig": {
+               "extends": "react-app"
+             },
+             "browserslist": {
+               "production": [
+                 ">0.2%",
+                 "not dead",
+                 "not op_mini all"
+               ],
+               "development": [
+                 "last 1 chrome version",
+                 "last 1 firefox version",
+                 "last 1 safari version"
+               ]
+             },
+             "devDependencies": {
+               "@babel/core": "7.7.2",
+               "@babel/plugin-proposal-decorators": "7.7.0",
+               "@babel/plugin-syntax-jsx": "7.2.0",
+               "@babel/preset-env": "7.7.1",
+               "babel-eslint": "10.0.3",
+               "customize-cra": "0.9.1",
+               "react-app-rewired": "2.1.5",
+               "tailwindcss": "^1.2.0"
+             }
+           }
+           
