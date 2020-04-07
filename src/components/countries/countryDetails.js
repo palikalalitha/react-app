@@ -1,63 +1,84 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { TiArrowLeft } from 'react-icons/ti';
+import { Header } from './header.js'
+import { BackButtonWrapper, BackArrowImagElement, CountryDetailsWrapper, CountryImage } from './styledComponents.js'
+
 class CountryDetails extends React.Component {
-    getBorderDetails = (list) => {
+    state = {
+        countriesList: []
+    }
+    async componentDidMount() {
+        try {
+            let response = await fetch("https://restcountries.eu/rest/v2/all ")
+            let data = await response.json()
+            this.setState({
+                countriesList: data
+            });
+        }
+        catch (error) {
+            alert("Loading error")
+        }
+    }
+    getBorderDetails = (countryDetails) => {
         let { history } = this.props
-        let { allCountries } = this.props.history.location.state
-        history.push(`/projects/countryDashboard/details/${list.alpha3Code}`, { list, allCountries })
+        history.push(`/projects/countryDashboard/details/${countryDetails.alpha3Code}`, countryDetails)
 
     }
     goBack = () => {
         this.props.history.goBack()
     }
     render() {
-        let { list, allCountries } = this.props.history.location.state
-        let obj = allCountries.filter(each => each.name === list.name)
-        let state = obj[0]
+        const { changeTheme, selectTheme } = this.props
+        const { state } = this.props.history.location
+        const allCountries = this.state.countriesList
         return (
-            <div style={{margin:"0px",paddingLeft:"15px"}} className={this.props.selectTheme?"dark":'light'}>
-                <div>
-                    <div style={backButton}>
-                        <h3 onClick={this.goBack} style={this.props.selectTheme?backBtnDarkMode:backBtnLightMode}><TiArrowLeft/>Back</h3>
-                    </div>
-                    <div style={countryBox}>
-                        <img src={state.flag} style={img} alt="img" width="250px" height="250px"/>
-                        <div style={{padding:"10px"}}>
-                            <h2 style={{margin:"0px"}}>{state.name}</h2>
-                            <div style={{display:"flex",justifyContent:"space-between"}}>
-                                <div >
-                                    <p><b>Native Name: </b>{state.nativeName}</p>
-                                    <p><b>Population: </b>{state.population}</p>
-                                    <p><b>Region: </b>{state.region}</p>
+            <div className={this.props.selectTheme?"dark countryDetailsCard":'light countryDetailsCard'}>
+                <Header changeTheme={changeTheme} selectTheme={selectTheme} />
+                <BackButtonWrapper>
+                        <h3 onClick={this.goBack} style={selectTheme?backBtnDarkMode:backBtnLightMode}>
+                        <BackArrowImagElement><TiArrowLeft/></BackArrowImagElement>Back
+                        </h3>
+                </BackButtonWrapper>
+                <CountryDetailsWrapper>
+                        <CountryImage src={state.flag}  alt="img"/>
+                        <div>
+                            <div>
+                                <h4 style={countryStyle}><b>{state.name}</b></h4>
+                                <div style={contentBox}>
+                                    <div>
+                                        <p><b>Native Name: </b>{state.nativeName}</p>
+                                        <p><b>Population: </b>{state.population}</p>
+                                        <p><b>Region: </b>{state.region}</p>
+                                    </div>
+                                    <div>
+                                        <p><b>Top LevelDomain: </b>{state.topLevelDomain}</p>
+                                        <p><b>Currencies: </b>{state.currencies.map((item,index)=><span>{item.name}</span>)}</p>
+                                        <p><b>Languages: </b>{state.languages.map((item,index)=><span style={languages}>{item.name},</span>)}</p>
+                                        </div>
                                 </div>
                                 <div>
-                                    <p><b>Top Level Domain: </b>{state.topLevelDomain}</p>
-                                    <p><b>Currencies: </b>{state.currencies.map((item,index)=><span>{item.name}</span>)}</p>
-                                    <p><b>Languages: </b>{state.languages.map((item,index)=><span style={{margin:"10px"}}>{item.name},</span>)}</p>
-                                    </div>
+                                    <p><b>Sub Region: </b>{state.subregion}</p>
+                                    <p><b>Capital: </b>{state.capital}</p>
+                                    <p><b>Border Countries:</b></p>
+                                </div>
                             </div>
-                            <p><b>Sub Region: </b>{state.subregion}</p>
-                            <p><b>Capital: </b>{state.capital}</p>
-                              <div>
-                           <p><b>Border Countries:</b>
-                            <div style={bordersBox} >{state.borders.map(item1=>
-                            allCountries.map((item,index)=>
-                            (item.alpha3Code===item1?
-                            <button style={this.props.selectTheme?borderBtnDarkMode:borderBtnLightMode} onClick={()=>this.getBorderDetails(item)}>{item.name}</button>:"")))}
-                           </div>
-                            </p>
+                            <div>
+                                <div style={bordersBox}>
+                                        {state.borders.map(eachBorder=>allCountries.map(eachCountry=>
+                                        (eachCountry.alpha3Code===eachBorder?
+                                        <button style={selectTheme?borderBtnDarkMode:borderBtnLightMode} onClick={()=>this.getBorderDetails(eachCountry)}>{eachCountry.name}</button>:"")))}
+                                </div>
+                            </div>
+                        
                         </div>
-                           </div>
-                         
-
-
-                    </div> 
-
-                </div>
+                    </CountryDetailsWrapper>
             </div>)
     }
 }
+
+
+
 export default withRouter(CountryDetails)
 const bordersBox = {
     display: "flex",
@@ -65,7 +86,8 @@ const bordersBox = {
 }
 const borderBtnDarkMode = {
     margin: "5px 10px",
-    height: " 30px",
+    height: "40px",
+    padding: "10px",
     backgroundColor: "#3b4e5e",
     boxShadow: "0 2px 2px #4b5661",
     border: "none",
@@ -73,43 +95,47 @@ const borderBtnDarkMode = {
     fontSize: "13px"
 }
 const borderBtnLightMode = {
-    margin: " 5px 10px",
-    height: "30px",
+    margin: "5px 10px",
+    height: "40px",
+    padding: "10px",
     boxShadow: "0 2px 2px silver",
     border: "none",
     fontSize: "13px"
 }
-
-const img = {
-
-    objectFit: "cover"
-}
 const countryBox = {
+    marginTop: "30px",
     display: "flex",
     justifyContent: "space-around",
     //flexWrap: "wrap"
 }
 const backBtnDarkMode = {
+    display: "flex",
     color: "white",
     backgroundColor: "#3b4e5e",
     boxShadow: "0 2px 2px #4b5661",
-    padding: "10px"
+    padding: "10px",
+    //marginTop: "10px"
 }
 const backBtnLightMode = {
+    display: "flex",
     boxShadow: "0 2px 5px silver",
     padding: "10px"
 }
-const backButton = {
-    width: "100px",
-    height: "100px",
-    paddingLeft: "20px"
+const BackArrow = {
+
 }
-
-
-
-
-
-
+const countryStyle = {
+    ///paddingLeft: "10px",
+    margin: "10px"
+}
+const contentBox = {
+    display: "flex",
+    justifyContent: "space-between",
+    //margin: "10px"
+}
+const languages = {
+    margin: "10px"
+}
 // <p>{this.state.countryDetails.topLevelDomain}</p>
 //             <p>{this.state.countryDetails.currencies}</p>
 //    

@@ -6,18 +6,18 @@ const darkMode = {
 class FilterRegions extends React.Component {
     onChangeFilterRegions = (event) => {
         this.props.selectedRegion(event.target.value)
-
     }
     renderRegions = () => {
-        let regionsList = this.props.regionsList
+        let { regionsList } = this.props
         return (
-            regionsList.map(item => item !== "" ? <option value={item}>{item}</option> : "")
+            regionsList.map(item => <option key={item} value={item}>{item}</option>)
         )
     }
     render() {
+        const { selectTheme } = this.props
         return (
             <div>
-            <select style={this.props.selectTheme?darkMode:null} onChange={this.onChangeFilterRegions}>
+            <select style={selectTheme?darkMode:null} onChange={this.onChangeFilterRegions}>
                 <option value="all">All</option>
                 {this.renderRegions()} 
             </select>
@@ -25,4 +25,4 @@ class FilterRegions extends React.Component {
         )
     }
 }
-export { FilterRegions }
+export default FilterRegions

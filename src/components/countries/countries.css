@@ -8,25 +8,12 @@
     color: black
 }
 
-.navBarDarkMode {
-    display: flex;
-    justify-content: space-between;
-    background-color: #3b4e5e;
-    color: white;
-    padding-left: 15px;
-    box-shadow: 0 8px 6px -6px black;
-}
 
-.navabarLightMode {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 15px;
-    box-shadow: 0 8px 6px -6px silver;
-}
 
 .countrycard {
     display: flex;
     flex-wrap: wrap;
+    padding-left: 10px;
 }
 
 .filterBox {
@@ -34,18 +21,27 @@
     justify-content: space-between;
 }
 
-.searchbarDarkMode {
-    border: none;
-    background-color: #3b4e5e;
-}
-
-.searchbarLightMode {
-    border: none;
-    background-color: #fff;
-
-}
 
 .theme {
     display: flex;
     align-items: center
+}
+
+.Loading {
+    height: 40vh;
+    width: 100vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.countryDetailsCard {
+    height: 600px;
+}
+
+p {
+    margin: 10px;
+    text-align: left;
 }

@@ -1,31 +1,22 @@
 import React from 'react'
-//import { WiNightClear } from 'react-icons/wi';
+import { Theme, NavBar, ThemeButton } from './styledComponents.js'
 import { FiMoon } from 'react-icons/fi';
 class Header extends React.Component {
-
     render() {
+        const { selectTheme, changeTheme } = this.props
         return (
-            <div className={this.props.selectTheme?"navBarDarkMode":"navabarLightMode"}>
+            <NavBar id={selectTheme}>
                 <h2>Where in the world?</h2>
-                <div className="theme" onClick={this.props.changeTheme}>
-                <h3>    
-                <FiMoon/>
-                </h3>
-                <button style={this.props.selectTheme?darkTheme:lightTheme}>{this.props.selectTheme?"Dark Mode":"Light Mode"}</button>
-                </div>
-            </div>)
+                <Theme onClick={changeTheme}>
+                  <h1>    
+                      <FiMoon/>
+                  </h1>
+                  <ThemeButton id={selectTheme}>{selectTheme?" Dark Mode":" Light Mode"}</ThemeButton>
+                </Theme>
+            </NavBar>)
+
     }
 }
 
 export { Header }
-
-const darkTheme = {
-    border: "none",
-    fontSize: "15px",
-    color: "white"
-}
-const lightTheme = {
-    border: "none",
-    fontSize: "15px",
-    color: "black"
-}
+//             {/*</NavBar>) {/*<NavBar id={this.props.selectTheme}>*/}

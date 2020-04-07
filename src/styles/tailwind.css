@@ -6837,6 +6837,10 @@ video {
   box-shadow: none;
 }
 
+.shadow-custom {
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
 .hover\:shadow-xs:hover {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
@@ -6877,6 +6881,10 @@ video {
   box-shadow: none;
 }
 
+.hover\:shadow-custom:hover {
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
 .focus\:shadow-xs:focus {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
@@ -6915,6 +6923,10 @@ video {
 
 .focus\:shadow-none:focus {
   box-shadow: none;
+}
+
+.focus\:shadow-custom:focus {
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
 }
 
 .fill-current {
@@ -17158,6 +17170,10 @@ code {
     box-shadow: none;
   }
 
+  .sm\:shadow-custom {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .sm\:hover\:shadow-xs:hover {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -17198,6 +17214,10 @@ code {
     box-shadow: none;
   }
 
+  .sm\:hover\:shadow-custom:hover {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .sm\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -17236,6 +17256,10 @@ code {
 
   .sm\:focus\:shadow-none:focus {
     box-shadow: none;
+  }
+
+  .sm\:focus\:shadow-custom:focus {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   }
 
   .sm\:fill-current {
@@ -27466,6 +27490,10 @@ code {
     box-shadow: none;
   }
 
+  .md\:shadow-custom {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .md\:hover\:shadow-xs:hover {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -27506,6 +27534,10 @@ code {
     box-shadow: none;
   }
 
+  .md\:hover\:shadow-custom:hover {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .md\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -27544,6 +27576,10 @@ code {
 
   .md\:focus\:shadow-none:focus {
     box-shadow: none;
+  }
+
+  .md\:focus\:shadow-custom:focus {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   }
 
   .md\:fill-current {
@@ -37774,6 +37810,10 @@ code {
     box-shadow: none;
   }
 
+  .lg\:shadow-custom {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .lg\:hover\:shadow-xs:hover {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -37814,6 +37854,10 @@ code {
     box-shadow: none;
   }
 
+  .lg\:hover\:shadow-custom:hover {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .lg\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -37852,6 +37896,10 @@ code {
 
   .lg\:focus\:shadow-none:focus {
     box-shadow: none;
+  }
+
+  .lg\:focus\:shadow-custom:focus {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   }
 
   .lg\:fill-current {
@@ -48082,6 +48130,10 @@ code {
     box-shadow: none;
   }
 
+  .xl\:shadow-custom {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .xl\:hover\:shadow-xs:hover {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -48122,6 +48174,10 @@ code {
     box-shadow: none;
   }
 
+  .xl\:hover\:shadow-custom:hover {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+  }
+
   .xl\:focus\:shadow-xs:focus {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
@@ -48160,6 +48216,10 @@ code {
 
   .xl\:focus\:shadow-none:focus {
     box-shadow: none;
+  }
+
+  .xl\:focus\:shadow-custom:focus {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
   }
 
   .xl\:fill-current {

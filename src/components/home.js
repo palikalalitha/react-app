@@ -23,8 +23,12 @@ class Home extends React.Component {
                 <li>
                     <Link to="/formComponents">Form Components</Link>
                 </li>
+                
                 <li>
                     <Link to="/countryDashboard">Country Dashboard</Link>
+                </li>
+                                                <li>
+                    <Link to="/game"> Game</Link >
                 </li>
                                 <li>
                     <Link to="/practice">Practice Page</Link >

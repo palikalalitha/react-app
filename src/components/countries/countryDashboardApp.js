@@ -1,47 +1,33 @@
-import { Header } from './header.js'
 import React from 'react'
-import { TiArrowSync } from 'react-icons/ti'
-import { CountriesFilterBar } from './countriesFilterBar.js'
+import tw from 'tailwind.macro'
+import CountriesFilterBar from './countriesFilterBar.js'
+import { GoSync } from "react-icons/go"
 import CountryCard from './countryCard.js'
-let countries = []
+import { Header } from './header.js'
+//import { CountryApp, HeaderWrapper } from './styledComponents.js'
 let regionsList = []
+let filterList = []
 class CountryDashboardApp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLoaded: false,
             countriesList: [],
-            dummyCountriesList: [],
-            countries: [],
             searchText: "",
             selectedRegion: "all",
-            regionsList: [],
         }
     }
-    getCountries() {
-        //       let response=await ("https://restcountries.eu/rest/v2/all")
-        //     let data=await response.json();
-    }
-    componentDidMount() {
-
-        fetch("https://restcountries.eu/rest/v2/all ")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        countriesList: result,
-                        dummyCountriesList: result,
-                        isLoaded: true
-                    });
-                    this.state.countriesList.map(item => { countries.push(item.name) })
-                    this.setState({
-                        countries
-                    })
-
-                })
-            .catch(error => {
-                alert("Loading error")
-            })
+    async componentDidMount() {
+        try {
+            let response = await fetch("https://restcountries.eu/rest/v2/all ")
+            let data = await response.json()
+            this.setState({
+                countriesList: data,
+            });
+            filterList = data
+        }
+        catch (error) {
+            alert("Loading error")
+        }
     }
     onChangeSearchText = (userInput) => {
         this.setState({
@@ -49,67 +35,77 @@ class CountryDashboardApp extends React.Component {
         })
         this.filterCountriesBySearchText(userInput)
     }
+
     onChangeSelectedRegion = (userInput) => {
         this.setState({
             selectedRegion: userInput
         })
         this.filterSelectedRegions(userInput)
     }
-    combinationSearch = (countryName, countryRegion) => {
+    filterCountriesBySearchText = (userInput) => {
+        let countryRegion = this.state.selectedRegion
+        this.searchCountries(userInput, countryRegion)
+    }
+
+    filterSelectedRegions = (userInput) => {
+        let countryName = this.state.searchText
+        this.searchCountries(countryName, userInput)
+    }
+    searchCountries = (countryName, countryRegion) => {
         if (countryName === "" && countryRegion === "all") {
-            this.setState({
-                dummyCountriesList: this.state.countriesList
-            })
+            filterList = this.state.countriesList
         }
         else if (countryName !== "" && countryRegion !== "all") {
             let countriesNames = this.state.countriesList.filter(eachCountry => eachCountry.name.toLowerCase().search(countryName.toLowerCase()) !== -1)
             let result = countriesNames.filter(eachRegion => eachRegion.region === countryRegion)
-            this.setState({
-                dummyCountriesList: result
-            })
+
+            filterList = result
+
         }
         else if (countryName !== "" && countryRegion === "all") {
             let searchResults = this.state.countriesList.filter(eachCountry => eachCountry.name.toLowerCase().search(countryName.toLowerCase()) !== -1)
-            this.setState({
-                dummyCountriesList: searchResults
-            })
+
+            filterList = searchResults
+
         }
         else if (countryName === "" && countryRegion !== "all") {
             let searchResults = this.state.countriesList.filter(eachCountry => eachCountry.region.toLowerCase().search(countryRegion.toLowerCase()) !== -1)
-            this.setState({
-                dummyCountriesList: searchResults
-            })
+            filterList = searchResults
         }
     }
-    filterCountriesBySearchText = (userInput) => {
-        let countryRegion = this.state.selectedRegion
-        this.combinationSearch(userInput, countryRegion)
-    }
-    filterSelectedRegions = (userInput) => {
-        let countryName = this.state.searchText
-        this.combinationSearch(countryName, userInput)
-    }
+
+
     getRegionOptions = () => {
         let countriesData = this.state.countriesList
         regionsList = [...new Set(countriesData.map(item => item.region))]
     }
     render() {
+        const { selectTheme, changeTheme } = this.props
+        const { countriesList } = this.state
         return (
-            <div>
-                {this.getRegionOptions()}
-                <div style={{margin:"5px",padding:"20px"}} className={this.props.selectTheme?"dark":"light"}>
-                <CountriesFilterBar countriesList={regionsList} selectTheme={this.props.selectTheme} filterSelectedRegion={this.filterSelectedRegions} selectTheme={this.props.selectTheme} countries={this.state.countries} filterRegions={this.filterBySelectedRegion} searchText={this.onChangeSearchText} selectedRegion={this.onChangeSelectedRegion} searchCountry={this.filterCountriesBySearchText}/>
-                </div>
-                <div className={this.props.selectTheme?"dark countrycard":"light countrycard"} >
-                {this.state.dummyCountriesList.length>0 ?this.state.dummyCountriesList.map((item,index)=>
-                    <CountryCard  list={item} allCountries={this.state.countriesList} selectTheme={this.props.selectTheme}/>):<h2 style={{textAlign:"center",width:"100%"}}><TiArrowSync/>Loading....</h2>}
-                </div>
-        </div>)
+            <div className={selectTheme?"dark":"light"}>
+                <div style={header} className={selectTheme?"dark":"light"}>
+                    <Header changeTheme={changeTheme} selectTheme={selectTheme} />
+                </div> 
+                
+              {this.getRegionOptions()}
+            <div  style={filterBar} className={selectTheme?"dark":"light"}>
+             <CountriesFilterBar regionsList={regionsList} selectTheme={selectTheme}
+             searchText={this.onChangeSearchText} selectedRegion={this.onChangeSelectedRegion} />
+            </div>
+            
+            <div className={selectTheme?"dark countrycard":"light countrycard"} >
+                {filterList.length>0 ?
+                filterList.map((item,index)=>
+                    <CountryCard  countryDetails={item} allCountries={countriesList} selectTheme={selectTheme}/>)
+                    :<h1 className="Loading"><GoSync/>Loading</h1>}
+            </div>
+            </div>)
     }
 }
 export { CountryDashboardApp }
-
-
+const header = { marginBottom: "5px" }
+const filterBar = { padding: "20px" }
 
 
 
