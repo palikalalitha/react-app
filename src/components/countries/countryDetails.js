@@ -2,7 +2,12 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { TiArrowLeft } from 'react-icons/ti';
 import { Header } from './header.js'
+//import themeStore from "../stores/ThemeStore"
 import { BackButtonWrapper, BackArrowImagElement, CountryDetailsWrapper, CountryImage } from './styledComponents.js'
+import { observable } from "mobx"
+import { observer } from "mobx-react"
+import themeStore from "../../stores/ThemeStore"
+@observer
 
 class CountryDetails extends React.Component {
     state = {
@@ -20,6 +25,12 @@ class CountryDetails extends React.Component {
             alert("Loading error")
         }
     }
+        getCurrenTheme = () => {
+        return themeStore.selectedTheme;
+    }
+    onChangeTheme = () => {
+        themeStore.setCurrentTheme()
+    }
     getBorderDetails = (countryDetails) => {
         let { history } = this.props
         history.push(`/projects/countryDashboard/details/${countryDetails.alpha3Code}`, countryDetails)
@@ -29,12 +40,14 @@ class CountryDetails extends React.Component {
         this.props.history.goBack()
     }
     render() {
-        const { changeTheme, selectTheme } = this.props
+        const selectTheme=this.getCurrenTheme()
+        const { changeTheme } = this.props
         const { state } = this.props.history.location
         const allCountries = this.state.countriesList
+        console.log(this.props.selectedTheme)
         return (
-            <div className={this.props.selectTheme?"dark countryDetailsCard":'light countryDetailsCard'}>
-                <Header changeTheme={changeTheme} selectTheme={selectTheme} />
+            <div className={selectTheme?"dark countryDetailsCard":'light countryDetailsCard'}>
+                <Header changeTheme={this.onChangeTheme} selectTheme={selectTheme} />
                 <BackButtonWrapper>
                         <h3 onClick={this.goBack} style={selectTheme?backBtnDarkMode:backBtnLightMode}>
                         <BackArrowImagElement><TiArrowLeft/></BackArrowImagElement>Back

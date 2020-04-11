@@ -1,17 +1,21 @@
-import { observable, action } from 'mobx'
+import { observable, action, computed } from 'mobx'
 
 class CounterStore {
    @observable count = 0
 
-   @action.bound
+   @action
    incrementCounter() {
-      this.count = this.count + 1
+      this.count++
    }
+   @action
+   updateCount = (newValue) => {
 
-   @action.bound
+      this.count = newValue
+   }
+   @action
    decrementCounter() {
-      this.count = this.count - 1
+      this.count--
    }
 }
-
-export default CounterStore
+const counter = new CounterStore()
+export default counter

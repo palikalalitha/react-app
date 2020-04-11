@@ -17,9 +17,26 @@ class Home extends React.Component {
                 <li>
                     <Link to="/carlist">Car list</Link >
                 </li>
+                                <li>
+                    <Link to="/eventlist">Event list</Link >
+                </li>
+                  <li>
+                   <Link to="/mobxStoreTodoApp">TODO</Link>
+                </li>
+                            <li>
+                    <Link to="/counter-page">Counter</Link >
+                </li>
+               
                 <li>
                    <Link to="/todolist">Todo List</Link>
                 </li>
+                <li>
+                   <Link to="/mobxtodolist">Mobx Todo List</Link>
+                </li>
+                                <li>
+                   <Link to="/mobxpractice">Mobx Practice</Link>
+                </li>
+
                 <li>
                     <Link to="/formComponents">Form Components</Link>
                 </li>
@@ -33,6 +50,7 @@ class Home extends React.Component {
                                 <li>
                     <Link to="/practice">Practice Page</Link >
                 </li>
+    
             </ul>
         </nav>        
     </div>)

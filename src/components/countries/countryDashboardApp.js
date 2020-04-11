@@ -4,10 +4,15 @@ import CountriesFilterBar from './countriesFilterBar.js'
 import { GoSync } from "react-icons/go"
 import CountryCard from './countryCard.js'
 import { Header } from './header.js'
+//import { observable } from "mobx"
+import { observer } from "mobx-react"
+
+import themeStore from "../../stores/ThemeStore"
+
 //import { CountryApp, HeaderWrapper } from './styledComponents.js'
 let regionsList = []
 let filterList = []
-class CountryDashboardApp extends React.Component {
+@observer class CountryDashboardApp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -28,6 +33,12 @@ class CountryDashboardApp extends React.Component {
         catch (error) {
             alert("Loading error")
         }
+    }
+    getCurrenTheme = () => {
+        return themeStore.selectedTheme;
+    }
+    onChangeTheme = () => {
+        themeStore.setCurrentTheme()
     }
     onChangeSearchText = (userInput) => {
         this.setState({
@@ -83,21 +94,21 @@ class CountryDashboardApp extends React.Component {
         const { selectTheme, changeTheme } = this.props
         const { countriesList } = this.state
         return (
-            <div className={selectTheme?"dark":"light"}>
-                <div style={header} className={selectTheme?"dark":"light"}>
-                    <Header changeTheme={changeTheme} selectTheme={selectTheme} />
+            <div className={this.getCurrenTheme()?"dark":"light"}>
+                <div style={header} className={this.getCurrenTheme()?"dark":"light"}>
+                    <Header changeTheme={this.onChangeTheme} selectTheme={this.getCurrenTheme()} />
                 </div> 
                 
               {this.getRegionOptions()}
-            <div  style={filterBar} className={selectTheme?"dark":"light"}>
-             <CountriesFilterBar regionsList={regionsList} selectTheme={selectTheme}
+            <div  style={filterBar} className={this.getCurrenTheme()?"dark":"light"}>
+             <CountriesFilterBar regionsList={regionsList} selectTheme={this.getCurrenTheme()}
              searchText={this.onChangeSearchText} selectedRegion={this.onChangeSelectedRegion} />
             </div>
             
-            <div className={selectTheme?"dark countrycard":"light countrycard"} >
+            <div className={this.getCurrenTheme()?"dark countrycard":"light countrycard"} >
                 {filterList.length>0 ?
                 filterList.map((item,index)=>
-                    <CountryCard  countryDetails={item} allCountries={countriesList} selectTheme={selectTheme}/>)
+                    <CountryCard  countryDetails={item} allCountries={countriesList} selectTheme={this.getCurrenTheme()}/>)
                     :<h1 className="Loading"><GoSync/>Loading</h1>}
             </div>
             </div>)

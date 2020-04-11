@@ -5,7 +5,7 @@ class NameForm extends React.Component {
         this.state = {
             userText: "",
             selectedValue: "",
-            
+
             addresList: ["kakinada", "vizag", "guntur", "vijayawada", "rajamundry", "tuni", "srikakulam"],
             searchResults: []
         }
@@ -25,7 +25,8 @@ class NameForm extends React.Component {
         console.log("the user selected city:  ", this.state.searchResults)
         event.preventDefault();
 
-    }getUserSelectedValue = (event) => {
+    }
+    getUserSelectedValue = (event) => {
         this.setState({
             selectedValue: event.target.value
         })

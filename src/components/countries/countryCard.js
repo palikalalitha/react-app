@@ -1,5 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import { observer } from "mobx-react"
+
+import themeStore from "../../stores/ThemeStore"
 
 class CountryCard extends React.Component {
     navigateToCountryDetailsPage = () => {
@@ -7,6 +10,7 @@ class CountryCard extends React.Component {
         history.push(`/projects/countryDashboard/details/${countryDetails.alpha3Code}`, countryDetails)
     }
     render() {
+        // const selectTheme = this.getCurrenTheme()
         const { countryDetails, selectTheme } = this.props
         return (
             <div onClick={this.navigateToCountryDetailsPage} style={selectTheme?cardDarkMode:cardLightMode} >
