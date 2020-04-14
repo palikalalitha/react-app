@@ -3,14 +3,10 @@ import { FiMoon } from 'react-icons/fi';
 
 //import themeStore from "../../stores/ThemeStore"
 import { Theme, NavBar, ThemeButton } from './styledComponents'
-type HeaderProps={
- changeTheme:Function
- selectTheme:String
- id:string
-}
-class Header extends React.Component<HeaderProps> {
+
+class Header extends React.Component {
     render() {
-        const {selectTheme,changeTheme}=this.props
+        const { selectTheme, changeTheme } = this.props
         return (
             <NavBar id={selectTheme}>
                 <h2>Where in the world?</h2>

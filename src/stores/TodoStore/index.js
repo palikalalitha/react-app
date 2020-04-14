@@ -40,9 +40,9 @@ class TodoStore {
     {
         return this.todos.length
     }
-    // @computed get getTodoCount() {
-    //     return this.todos.length
-    // }
+    @computed get getTodoCount() {
+        return this.todos.length
+    }
     @computed get filteredTodos() {
         switch (this.selectedFilter) {
             case "all":

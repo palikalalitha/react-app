@@ -1,26 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home  from "./components/home.js"
-import { CountryDashboardApp } from "./components/countries/countryDashboardApp"
+import Home from "./components/home.js"
+import { CountryDashboardApp } from "./components/countries/countryDashboardApp.js"
 import { CarsList } from './components/CarsList'
 import { Todo } from './components/todolist'
 import { TodoList } from "./components/MobxTodo/TodoList"
-import { Greetings } from './components/forms/greetings'
-import { Desert } from './components/forms/desert'
-import { States } from './components/forms/state'
-import { DisableButton } from './components/forms/disableButton'
-import Practice from './components/practice'
-import { FormComponents } from './components/forms/formComponents'
-import { CheckboxWithLabel } from './components/forms/CheckboxWithLabel'
+import { Greetings } from './components/forms/greetings.js'
+import { Desert } from './components/forms/desert.js'
+import { States } from './components/forms/state.js'
+import { DisableButton } from './components/forms/disableButton.js'
+import Practice from './components/practice.js'
+import { FormComponents } from './components/forms/formComponents.js'
+import { CheckboxWithLabel } from './components/forms/CheckboxWithLabel.js'
 
-import CountryDetails from './components/countries/countryDetails'
-import Game from "./components/emojis/game"
-import NavBar from './components/forms/navbar'
+import CountryDetails from './components/countries/countryDetails.js'
+import Game from "./components/emojis/game.js"
+import NavBar from './components/forms/navbar.js'
 import CounterApp from "./components/CounterPage"
 
-import TodoApp from "./components/TodoMobx/TodoApp/index"
-import MobxPractice from "./components/MobxPractice/index"
-import EventApp from "./components/Event/EventApp/index"
+import TodoApp from "./components/TodoMobx/TodoApp/index.js"
+import MobxPractice from "./components/MobxPractice/index.js"
+import EventApp from "./components/Event/EventApp/index.js"
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
 import './components/countries/countries.css'
@@ -32,7 +32,7 @@ import "./App.css";
 class App extends React.Component {
     render() {
         return (
-        <Router basename={process.env.PUBLIC_URL}>
+            <Router basename={process.env.PUBLIC_URL}>
         <Switch>
             <Route path="/mobxStoreTodoApp">
             <NavBar title="Todo List"/>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { GoSearch } from 'react-icons/go';
 import { SearchBar, SearchBox, SearchIcon } from './styledComponents'
-type 
 class CountrySearch extends React.Component {
 
     onChangeSearchText = (event) => {

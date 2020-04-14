@@ -5,7 +5,7 @@ import store from "../../../stores/TodoStore/index"
 
 
 class AddTodo extends React.Component {
-    @observable todoTitle:string
+    @observable todoTitle
     @action.bound
     onChangeInput(event) {
         if (event.keyCode === 13) {
