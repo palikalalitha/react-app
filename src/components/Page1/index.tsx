@@ -1,10 +1,12 @@
+
 import React from "react";
 import styled from '@emotion/styled'
-import Page from './styledComponents.js'
 import logo from "../../logo.svg";
+import Page from './styledComponents.js'
+
 //import tw from 'tailwind.macro'
 
-const page1Container = styled.div `
+//const page1Container = styled.div `
  display:"flex";
     height: "100vh";
     //justify-content:"center";`

@@ -1,6 +1,6 @@
 import React from 'react'
-import FilterRegions from './regionSearch.js'
-import CountrySearch from './countrySearch.js'
+import FilterRegions from './regionSearch'
+import CountrySearch from './countrySearch'
 
 function CountriesFilterBar(props) {
     const { searchText, selectTheme, regionsList, selectedRegion } = props

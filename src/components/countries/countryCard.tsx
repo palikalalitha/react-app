@@ -1,8 +1,8 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { observer } from "mobx-react"
+//bmport { observer } from "mobx-react"
 
-import themeStore from "../../stores/ThemeStore"
+//import themeStore from "../../stores/ThemeStore"
 
 class CountryCard extends React.Component {
     navigateToCountryDetailsPage = () => {

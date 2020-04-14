@@ -1,4 +1,4 @@
-import { observable, action, computed, autorun } from 'mobx'
+import { observable, computed, autorun } from 'mobx'
 
 class MobxStore {
     message = observable({
@@ -15,7 +15,9 @@ class MobxStore {
     //     console.log(this.sum.get(), { delay: 600 })
     // }
     run = autorun(() =>
-        console.log(this.sum.get()), { delay: 300 })
+        console.log(this.sum.get()), {
+            delay: 300
+        })
 
     age = observable.box(10)
     checkAge = autorun(

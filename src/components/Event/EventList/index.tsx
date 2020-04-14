@@ -1,7 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react"
 import { observable } from "mobx"
-import Event from "../UpdateEvent/index.js"
+import Event from "../UpdateEvent/index"
 @observer class EventList extends React.Component {
     @observable updateStatus = false
     @observable eventObj

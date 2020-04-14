@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { observer, inject } from 'mobx-react'
-import { CounterContainer, IncrementButton, InputBox } from "./styles.js"
+import { observer } from 'mobx-react'
 import counter from "../../stores/CounterStore"
+import { CounterContainer, IncrementButton } from "./styles"
+
 let regex = /^[0-9]*$/
 @observer class CounterApp extends Component {
 
@@ -15,7 +16,6 @@ let regex = /^[0-9]*$/
     // decrementCounter()
   }
   onChangeCount = (event) => {
-
     counter.updateCount(event.target.value)
   }
   render() {

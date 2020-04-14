@@ -1,3 +1,4 @@
+
 import styled from "@emotion/styled"
 import tw from "tailwind.macro"
 const EventListContainer = styled.div `${tw`flex items-center justify-around border-solid border border-blue-400`}`;

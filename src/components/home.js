@@ -1,7 +1,7 @@
 import React from 'react'
 //import image from './back-icon.svg'
 //import { NavBar } from '/components/forms/navbar.js'
-import NavBar from './forms/navbar.js'
+import NavBar from './forms/navbar'
 import {
     BrowserRouter as Router,
     Link
@@ -56,4 +56,4 @@ class Home extends React.Component {
     </div>)
     }
 }
-export { Home }
+export default Home

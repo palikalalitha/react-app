@@ -1,10 +1,11 @@
 import React from "react"
-import store from "../../../stores/TodoStore/index.js"
 import { observable, action } from "mobx"
-import { observer } from "mobx-react"
-class AddTodo extends React.Component {
-    @observable todoTitle
+//import { observer } from "mobx-react"
+import store from "../../../stores/TodoStore/index"
 
+
+class AddTodo extends React.Component {
+    @observable todoTitle:string
     @action.bound
     onChangeInput(event) {
         if (event.keyCode === 13) {

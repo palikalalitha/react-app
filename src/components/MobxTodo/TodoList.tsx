@@ -1,21 +1,21 @@
-// import React from 'react'
-// import { observable, action, computed } from 'mobx'
-// import { observer } from "mobx-react"
+import React from 'react'
+import { observable } from 'mobx'
+import { observer } from "mobx-react"
 
-// //const root = document.getElementById('root');
 
-// @observer class TodoList extends React.Component {
+// type userTodo={
+//     todoContent:string,
+//     todoChecked:boolean,
+//     id:number
+// }
+// @observer class TodoList extends React.Component<userTodo> {
 //     todo = observable({
-//         todoList: [],
+//         todoList:[],
 //         dummy: [],
 //         todoCount: 0,
-//         todoChecked: false,
 //         footerStatus: false
 //     })
-//     // @observable todoList = []
-//     // @observable dummy = []
-//     // @observable todoCount = 0
-//     // @observable footerStatus = false
+
 
 //     incrementTodoCount = () => {
 //         this.todo.todoCount++;
@@ -41,7 +41,7 @@
 //         }
 
 //     }
-//     checked = (id) => {
+//     checked = (id)=> {
 //         let checkedId = this.todo.todoList.indexOf(id)
 //         this.todo.todoList[checkedId].todoChecked = !this.todo.todoList[checkedId].todoChecked;
 //         if (this.todo.todoList[checkedId].todoChecked) {
@@ -103,7 +103,61 @@
 //         </div>)
 //     }
 // }
+// type createTodoProps=
+// {
+//     status:boolean,
+//     checked:Function,
+//     close:Function,
+//     input:string,
+//     id:number
+// }
+// class CreateTodo extends React.Component<createTodoProps> {
+//     render() {
+//         return (
+//             <div>
+//             <div className="todo">
+//             <input type="checkbox" className="checkbox" checked={this.props.status} onChange={this.props.checked.bind(this,this.props.id)}/>
+//             <input type="textbox" className="result-box"  disabled={this.props.status} defaultValue={this.props.input}/>
+//             <button type="button" className="close-btn" onClick={this.props.close.bind(this,this.props.id)}>&times;</button>
+//             </div>
 
+//             </div>
+//         )
+//     }
+// }
 
+// type footerProps={
+//     status:boolean,
+//     count:number,
+//     all:Function,
+//     list:Array<Object>,
+//     active:Function,
+//     completed:Function,
+//     showClear:boolean,
+//     clear:Function
+    
+// }
+// class Footer extends React.Component<footerProps> {
+//     constructor(props) {
+//         super(props)
+//     }
+//     render() {
+//         return (
+//             <div style={footer} className={this.props.status}>
+//             <p>{this.props.count} itmes left</p>
+//             <p onClick={this.props.all}>All</p>
+//             <p onClick={this.props.active.bind(this,this.props.list)}>Active</p>
+//             <p onClick={this.props.completed}>Completed</p>
+//             <p className={this.props.showClear} onClick={this.props.clear}>Clear Completed</p>
+//         </div>
+//         )
+//     }
+
+// }
+// const footer = {
+//     display: "flex",
+//     justifyContent: "center"
+
+// }
 // //ReactDOM.render(<Todo/>, root)
 // export { TodoList }

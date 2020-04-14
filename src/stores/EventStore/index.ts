@@ -1,5 +1,5 @@
 import { observable, action, computed } from "mobx"
-import EventModel from "../Model/EventModel.js"
+import EventModel from "../Model/EventModel"
 class EventStore {
     @observable events = []
     @action.bound

@@ -1,12 +1,15 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-import { TiArrowLeft } from 'react-icons/ti';
-import { Header } from './header.js'
-//import themeStore from "../stores/ThemeStore"
-import { BackButtonWrapper, BackArrowImagElement, CountryDetailsWrapper, CountryImage } from './styledComponents.js'
 import { observable } from "mobx"
 import { observer } from "mobx-react"
+import { TiArrowLeft } from 'react-icons/ti';
+
 import themeStore from "../../stores/ThemeStore"
+import { Header } from './header'
+//import themeStore from "../stores/ThemeStore"
+import { BackButtonWrapper, BackArrowImagElement, CountryDetailsWrapper, CountryImage } from './styledComponents'
+
+
 @observer
 
 class CountryDetails extends React.Component {

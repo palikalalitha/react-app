@@ -1,13 +1,16 @@
 import { observable } from 'mobx'
-
-class ThemeStore {
+type ThemeProps=
+{
+    selectedTheme:string
+    setCurrentTheme:Function
+}
+class ThemeStore<ThemeProps> {
     @observable selectedTheme
     constructor() {
         this.selectedTheme = false
     }
     //@action.bound
     setCurrentTheme() {
-        //alert("1")
         if (this.selectedTheme) {
             this.selectedTheme = false
         }

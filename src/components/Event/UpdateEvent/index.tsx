@@ -1,7 +1,8 @@
 import React from "react"
 import { observable } from "mobx"
-import { EventListContainer, EventBox, EventInputBox, EditEventButton, AddEventButton, TextBoxContainer } from "./styles.js"
 import { observer } from "mobx-react"
+import { EventListContainer, EventBox, EventInputBox, EditEventButton, AddEventButton, TextBoxContainer } from "./styles"
+
 @observer class Event extends React.Component {
     @observable isEditEvent = false
     @observable eventName = this.props.eventName
@@ -37,7 +38,7 @@ import { observer } from "mobx-react"
              </EventListContainer>:""}*/}
                 <EventListContainer >
                     <TextBoxContainer>
-                        <EventBox>Event Name: {eachEvent.eventName}</EventBox>
+                        <EventInputBox>Event Name: {eachEvent.eventName}</EventInputBox>
                         <EventBox>Event Location: {eachEvent.eventLocation}</EventBox>
                     </TextBoxContainer>
                     <TextBoxContainer>
