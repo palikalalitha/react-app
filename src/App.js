@@ -17,7 +17,7 @@ import CountryDetails from './components/countries/countryDetails.js'
 import Game from "./components/emojis/game.js"
 import NavBar from './components/forms/navbar.js'
 import CounterApp from "./components/CounterPage"
-
+import GridMemoryGame from "./components/Game/GridMemoryGame/index.js"
 import TodoApp from "./components/TodoMobx/TodoApp/index.js"
 import MobxPractice from "./components/MobxPractice/index.js"
 import EventApp from "./components/Event/EventApp/index.js"
@@ -34,6 +34,11 @@ class App extends React.Component {
         return (
             <Router basename={process.env.PUBLIC_URL}>
         <Switch>
+                    <Route path="/grid-game">
+            <NavBar title="Memory Game"/>
+            <GridMemoryGame/>
+            </Route>
+        
             <Route path="/mobxStoreTodoApp">
             <NavBar title="Todo List"/>
             <TodoApp/>
