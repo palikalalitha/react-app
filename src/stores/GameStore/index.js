@@ -1,35 +1,10 @@
 import { observable, action } from "mobx"
 import Cell from "../Model/Cell/"
-const gridBox = [{
-        gridSize: 3, // this means 3x3 grid
-        hiddenCellCount: 3, // no. of hidden cells in this grid
-        gridWidth: 300
-    },
-    {
-        gridSize: 4, // this means 3x3 grid
-        hiddenCellCount: 4, // no. of hidden cells in this grid
-        gridWidth: 300
-    },
-    {
-        gridSize: 5, // this means 3x3 grid
-        hiddenCellCount: 5, // no. of hidden cells in this grid
-        gridWidth: 300
-    },
-    {
-        gridSize: 6, // this means 3x3 grid
-        hiddenCellCount: 6, // no. of hidden cells in this grid
-        gridWidth: 300
-    },
-    {
-        gridSize: 7, // this means 3x3 grid
-        hiddenCellCount: 7, // no. of hidden cells in this grid
-        gridWidth: 300
-    },
-
-]
-
-
-
+const gridBox = {
+    gridSize: 3,
+    hiddenCellCount: 3,
+    gridWidth: 300
+}
 class GameStore {
     @observable level
     @observable topLevel
@@ -45,41 +20,58 @@ class GameStore {
     }
 
     @action.bound
-    onCellClick() {
+    onCellClick(item) {
+        item.isHidden ? this.incrementSelectedCellsCount() : this.goToNextLevelAndUpdateCells()
+
+        console.log("cell clicking", item)
 
     }
     @action.bound
     setGridCells() {
-        const { gridSize, hiddenCellCount } = gridBox[this.level]
-        console.log("grid size", gridSize)
+        const { gridSize, hiddenCellCount } = gridBox
         this.currentLevelGridCells = []
         for (let i = 0; i < gridSize * gridSize; i++) {
-            this.currentLevelGridCells.push(new Cell(Date.now(), false))
+            this.currentLevelGridCells.push(new Cell(Math.random(), false))
         }
-        console.log("level", this.level, this.currentLevelGridCells.length)
-        this.currentLevelGridCells = this.currentLevelGridCells.slice().sort(() => Math.random() - 0.5);
-        this.currentLevelGridCells.splice(hiddenCellCount)
-        this.currentLevelGridCells.map(eachCell => {
-            eachCell.isHidden = true
+        const randomCells = this.currentLevelGridCells.slice().sort(() => Math.random() - 0.5);
+        randomCells.splice(hiddenCellCount)
+        randomCells.map(eachRandomId => {
+            this.currentLevelGridCells.map(eachId => {
+                if (eachId === eachRandomId) {
+                    eachId.isHidden = true
+                }
+            })
         })
-        console.log("hiddenCellCount", this.currentLevelGridCells.length)
+        console.log(this.currentLevelGridCells)
     }
     @action.bound
     goToNextLevelAndUpdateCells() {
         this.level += 1
+        gridBox.gridSize += 1
+        gridBox.hiddenCellCount += 1
         this.setGridCells()
+        this.resetSelectedCellsCount()
     }
     @action.bound
     goToInitialLevelAndUpdateCells() {
         this.level = 0
+        gridBox.gridSize = 3
+        gridBox.hiddenCellCount = 3
+        this.resetSelectedCellsCount()
+        this.setGridCells()
     }
     @action.bound
     resetSelectedCellsCount() {
-
+        this.selectedCellsCount = 0
     }
     @action.bound
     incrementSelectedCellsCount() {
-
+        if (this.selectedCellsCount === gridBox.hiddenCellCount) {
+            this.goToNextLevelAndUpdateCells()
+            console.log("hlo")
+        }
+        this.selectedCellsCount += 1
+        console.log(this.selectedCellsCount)
     }
     @action.bound
     onPlayAgainClick() {
@@ -91,7 +83,7 @@ class GameStore {
     }
     @action.bound
     setTopLevel() {
-
+        this.topLevel = this.level
     }
 }
 const gameStore = new GameStore()
