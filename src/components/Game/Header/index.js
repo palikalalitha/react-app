@@ -1,22 +1,28 @@
 import React from "react"
-import GameField from "../GameField"
 import { observer } from "mobx-react"
-import { GameContainer, Navbar, ThemeButtton } from "./styles.js"
-//import themeStore from "../../../stores/ThemeStore/"
+import themeStore from "../../../stores/GameThemeStore/"
+import GameField from "../GameField"
+import { GameContainer, Navbar, ThemeButtton, TopdLevel } from "./styles.js"
+
 @observer
 class Header extends React.Component {
+    getSelectedTheme = () => {
+        return themeStore.selectedTheme
+    }
+    onChangeSelectedTheme = () => {
+        themeStore.setCurrentTheme()
+    }
     render() {
+        const { level, topLevel, currentLevelGridCells, selectedTheme } = this.props
         return (
             <div>
-            Header
             <GameContainer>
-            <h1>TopLevel: 0</h1>
+            <TopdLevel>TopLevel: {topLevel}</TopdLevel>
             <Navbar>
-            <h2>Level: 0</h2>
-            <ThemeButtton onClick={this.onChangeSelectedTheme}>Mode:</ThemeButtton></Navbar>
+            <h1>Level: {level}</h1>
+            <ThemeButtton selectedTheme={selectedTheme} onClick={this.onChangeSelectedTheme}>Mode: {this.getSelectedTheme()}</ThemeButtton></Navbar>
             </GameContainer>
-            
-            <GameField/>
+            <GameField currentLevelGridCells={currentLevelGridCells}/>
          </div>)
     }
 }

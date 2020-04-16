@@ -1,17 +1,14 @@
-import { observable } from 'mobx'
+import { observable, action } from 'mobx'
 
 class GameThemeStore {
-    @observable selectedTheme = {
-        light: "Light",
-        dark: "Dark"
-    }
-    //@action.bound
+    @observable selectedTheme = "Dark"
+    @action.bound
     setCurrentTheme() {
-        if (this.selectedTheme) {
-            this.selectedTheme = false
+        if (this.selectedTheme === "Dark") {
+            this.selectedTheme = "Light"
         }
         else {
-            this.selectedTheme = true
+            this.selectedTheme = "Dark"
         }
     }
 }

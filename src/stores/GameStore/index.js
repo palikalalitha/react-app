@@ -21,10 +21,7 @@ class GameStore {
 
     @action.bound
     onCellClick(item) {
-        item.isHidden ? this.incrementSelectedCellsCount() : this.goToNextLevelAndUpdateCells()
-
-        console.log("cell clicking", item)
-
+        item ? this.incrementSelectedCellsCount() : this.goToInitialLevelAndUpdateCells()
     }
     @action.bound
     setGridCells() {
@@ -66,12 +63,10 @@ class GameStore {
     }
     @action.bound
     incrementSelectedCellsCount() {
+        this.selectedCellsCount += 1
         if (this.selectedCellsCount === gridBox.hiddenCellCount) {
             this.goToNextLevelAndUpdateCells()
-            console.log("hlo")
         }
-        this.selectedCellsCount += 1
-        console.log(this.selectedCellsCount)
     }
     @action.bound
     onPlayAgainClick() {
