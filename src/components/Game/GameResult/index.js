@@ -10,7 +10,6 @@ class GameResult extends React.Component {
     }
     render() {
         const { Level } = this.props
-        console.log(Level)
         return (
             <GameResultContainer>
             <LevelText>{Level}</LevelText>

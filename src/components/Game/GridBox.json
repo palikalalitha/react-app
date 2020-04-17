@@ -38,5 +38,11 @@
         "hiddenCellCount": 9,
         "gridWidth": 550
 
+    },
+    {
+        "gridSize": 10,
+        "hiddenCellCount": 10,
+        "gridWidth": 600
+
     }
 ]

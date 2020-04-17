@@ -3,7 +3,7 @@ import GridBox from "../../components/Game/GridBox.json"
 import Cell from "../Model/Cell/"
 
 let cellTimeout;
-let seconds = 1000
+let seconds = 1500
 let finalLevel = 7;
 class GameStore {
     @observable level
@@ -21,10 +21,11 @@ class GameStore {
 
     @action.bound
     onCellClick(cell) {
-        cell.isHidden ? this.incrementSelectedCellsCount() : setTimeout(() => this.goToInitialLevelAndUpdateCells(), 100)
+        cell.isHidden ? this.incrementSelectedCellsCount() : setTimeout(() => this.goToInitialLevelAndUpdateCells(), 200)
     }
     @action.bound
     setGridCells() {
+        this.level = 6
         const { gridSize, hiddenCellCount } = GridBox[this.level]
         const userTimer = (gridSize * 2) * seconds
         for (let i = 0; i < gridSize * gridSize; i++) {
@@ -56,8 +57,8 @@ class GameStore {
     goToInitialLevelAndUpdateCells() {
         clearTimeout(cellTimeout)
         this.setTopLevel()
-        this.level = 0
-        this.currentLevelGridCells = []
+        this.level =
+            this.currentLevelGridCells = []
         this.resetSelectedCellsCount()
         this.setGridCells()
     }

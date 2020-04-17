@@ -21,14 +21,17 @@ class GridMemoryGame extends React.Component {
         const { gridWidth, hiddenCellCount, gridSize } = GridBox[level]
         const selectedTheme = themeStore.selectedTheme
         return (
+            <div>
             <GameContainer selectedTheme={selectedTheme}>
             <Header gridWidth={gridWidth} selectedTheme={selectedTheme}  level={level} topLevel={topLevel}/>
-             {isGameCompleted?
+            {isGameCompleted?
                 <GameResult selectedTheme={selectedTheme} Level={level}/>
-                :<GameField level={level}  gridSize={gridSize} hiddenCellCount={hiddenCellCount} 
+                :
+                <GameField level={level}  gridSize={gridSize} hiddenCellCount={hiddenCellCount} 
                 gridWidth={gridWidth} selectedTheme={selectedTheme}
                 currentLevelGridCells={currentLevelGridCells}/>}
-            </GameContainer>)
+            </GameContainer>
+            </div>)
     }
 }
 export default GridMemoryGame

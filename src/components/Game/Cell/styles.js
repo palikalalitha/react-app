@@ -7,22 +7,21 @@ height: ${props => props.gridWidth}px;
 pointer-events:${props=>props.isDisable};
 background-color:${props=>props.selectedTheme.cellBackgroundColor};`;
 
-// const Cells1 = styled.div `${tw``}
-// width:${props=>props.isClicked?props.gridWidth+"px":"0px"};
-// height:${props=>props.isClicked?props.gridWidth+"px":"0px"};
-// background-color:${props=>props.selectedTheme.cellActive}`;
 
 const Cells1 = styled.div `${tw``}
 width:${props=>props.isClicked?props.gridWidth+"px":"0px"};
 height:${props=>props.isClicked?props.gridWidth+"px":"0px"};
 background-color:${props=>props.selectedTheme.cellActive};
-// transition - property: "transform";
-// transition-duration:0.25s;`;
+transfrom:translate(25%);
+transition-duration:0.5s;
+`;
 
 const Cells2 = styled.div `${tw``}
 width:${props=>props.isClicked?props.gridWidth+"px":"0px"};
 height:${props=>props.isClicked?props.gridWidth+"px":"0px"};
-background-color:${props=>props.selectedTheme.cellFailed}`;
+background-color:${props=>props.selectedTheme.cellFailed};
+transfrom:translate(10px);
+transition-duration:0.5s`;
 
 
 export {
@@ -30,3 +29,7 @@ export {
     Cells2,
     CellContainer
 }
+// const Cells1 = styled.div `${tw``}
+// width:${props=>props.isClicked?props.gridWidth+"px":"0px"};
+// height:${props=>props.isClicked?props.gridWidth+"px":"0px"};
+// background-color:${props=>props.selectedTheme.cellActive}`;
