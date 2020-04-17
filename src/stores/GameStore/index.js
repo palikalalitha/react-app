@@ -1,10 +1,10 @@
 import { observable, action } from "mobx"
+import GridBox from "../../components/Game/GridBox.json"
 import Cell from "../Model/Cell/"
-const gridBox = {
-    gridSize: 3,
-    hiddenCellCount: 3,
-    gridWidth: 300
-}
+
+let cellTimeout;
+let seconds = 1000
+let finalLevel = 7;
 class GameStore {
     @observable level
     @observable topLevel
@@ -20,13 +20,13 @@ class GameStore {
     }
 
     @action.bound
-    onCellClick(item) {
-        item ? this.incrementSelectedCellsCount() : this.goToInitialLevelAndUpdateCells()
+    onCellClick(cell) {
+        cell.isHidden ? this.incrementSelectedCellsCount() : setTimeout(() => this.goToInitialLevelAndUpdateCells(), 100)
     }
     @action.bound
     setGridCells() {
-        const { gridSize, hiddenCellCount } = gridBox
-        this.currentLevelGridCells = []
+        const { gridSize, hiddenCellCount } = GridBox[this.level]
+        const userTimer = (gridSize * 2) * seconds
         for (let i = 0; i < gridSize * gridSize; i++) {
             this.currentLevelGridCells.push(new Cell(Math.random(), false))
         }
@@ -39,21 +39,25 @@ class GameStore {
                 }
             })
         })
-        console.log(this.currentLevelGridCells)
+        cellTimeout = setTimeout(() => this.goToInitialLevelAndUpdateCells(), userTimer)
     }
     @action.bound
     goToNextLevelAndUpdateCells() {
-        this.level += 1
-        gridBox.gridSize += 1
-        gridBox.hiddenCellCount += 1
+        clearTimeout(cellTimeout)
+        this.level++
+            this.currentLevelGridCells = []
         this.setGridCells()
         this.resetSelectedCellsCount()
+        if (this.level === finalLevel) {
+            this.isGameCompleted = true
+        }
     }
     @action.bound
     goToInitialLevelAndUpdateCells() {
+        clearTimeout(cellTimeout)
+        this.setTopLevel()
         this.level = 0
-        gridBox.gridSize = 3
-        gridBox.hiddenCellCount = 3
+        this.currentLevelGridCells = []
         this.resetSelectedCellsCount()
         this.setGridCells()
     }
@@ -63,18 +67,22 @@ class GameStore {
     }
     @action.bound
     incrementSelectedCellsCount() {
-        this.selectedCellsCount += 1
-        if (this.selectedCellsCount === gridBox.hiddenCellCount) {
-            this.goToNextLevelAndUpdateCells()
-        }
+        const { hiddenCellCount } = GridBox[this.level]
+        this.selectedCellsCount++
+            if (this.selectedCellsCount === hiddenCellCount) {
+                this.goToNextLevelAndUpdateCells()
+            }
     }
     @action.bound
     onPlayAgainClick() {
+        this.setTopLevel()
+        this.resetGame()
 
     }
     @action.bound
     resetGame() {
-
+        this.goToInitialLevelAndUpdateCells()
+        this.isGameCompleted = false
     }
     @action.bound
     setTopLevel() {
