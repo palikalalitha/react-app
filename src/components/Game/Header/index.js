@@ -1,16 +1,17 @@
-import React from "react"
-import { observer } from "mobx-react"
-import themeStore from "../../../stores/GameThemeStore/"
+import React from "react";
+import { observer } from "mobx-react";
 
-import { GameContainer, Navbar, ThemeButtton, TopdLevel, Level } from "./styles.js"
+import themeStore from "../../../stores/GameThemeStore/";
+
+import { GameContainer, Navbar, ThemeButtton, TopdLevel, Level } from "./styles.js";
 
 @observer
 class Header extends React.Component {
     onChangeSelectedTheme = () => {
-        themeStore.setCurrentTheme()
+        themeStore.setCurrentTheme();
     }
     render() {
-        const { level, topLevel, gridWidth, selectedTheme } = this.props
+        const { level, topLevel, gridWidth, selectedTheme } = this.props;
         return (
             <GameContainer>
                 <TopdLevel>TopLevel: {topLevel}</TopdLevel>
@@ -19,7 +20,7 @@ class Header extends React.Component {
                 <ThemeButtton selectedTheme={selectedTheme}  onClick={this.onChangeSelectedTheme}>
                 Mode:{selectedTheme.name} </ThemeButtton>
                 </Navbar>
-            </GameContainer>)
+            </GameContainer>);
     }
 }
-export default Header
+export default Header;

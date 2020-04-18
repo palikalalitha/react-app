@@ -1,37 +1,37 @@
-import React from "react"
-import { observer } from "mobx-react"
+import React from "react";
+import { observer } from "mobx-react";
 
-import gameStore from "../../../stores/GameStore"
-import themeStore from "../../../stores/GameThemeStore"
-import GridBox from "../GridBox.json"
-import GameResult from "../GameResult"
-import GameField from "../GameField"
-import Header from "../Header"
+import gameStore from "../../../stores/GameStore";
+import themeStore from "../../../stores/GameThemeStore";
 
-import { GameContainer } from "./styles.js"
+import GridBox from "../GridBox.json";
+import GameResult from "../GameResult";
+import GameField from "../GameField";
+import Header from "../Header";
+
+import GameContainer from "./styles.js";
 
 @observer
 class GridMemoryGame extends React.Component {
     constructor(props) {
         super(props)
-        gameStore.goToInitialLevelAndUpdateCells()
+        gameStore.goToInitialLevelAndUpdateCells();
     }
     render() {
-        const { level, topLevel, currentLevelGridCells, isGameCompleted } = gameStore
-        const { gridWidth, hiddenCellCount, gridSize } = GridBox[level]
-        const selectedTheme = themeStore.selectedTheme
+        const { level, topLevel, currentLevelGridCells, isGameCompleted } = gameStore;
+        const { gridWidth, hiddenCellCount, gridSize } = GridBox[level];
+        const selectedTheme = themeStore.selectedTheme;
         return (
-            <div>
             <GameContainer selectedTheme={selectedTheme}>
             <Header gridWidth={gridWidth} selectedTheme={selectedTheme}  level={level} topLevel={topLevel}/>
             {isGameCompleted?
-                <GameResult selectedTheme={selectedTheme} Level={level}/>
+                <GameResult  gridWidth={gridWidth} selectedTheme={selectedTheme} level={level}/>
                 :
                 <GameField level={level}  gridSize={gridSize} hiddenCellCount={hiddenCellCount} 
                 gridWidth={gridWidth} selectedTheme={selectedTheme}
                 currentLevelGridCells={currentLevelGridCells}/>}
             </GameContainer>
-            </div>)
+        );
     }
 }
-export default GridMemoryGame
+export default GridMemoryGame;

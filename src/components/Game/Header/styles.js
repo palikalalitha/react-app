@@ -1,5 +1,5 @@
-import styled from '@emotion/styled'
-import tw from 'tailwind.macro'
+import styled from '@emotion/styled';
+import tw from 'tailwind.macro';
 
 const GameContainer = styled.div `${tw`flex flex-col text-xl justify-center items-center `}`;
 
@@ -19,5 +19,4 @@ export {
     Navbar,
     TopdLevel,
     Level
-
-}
+};

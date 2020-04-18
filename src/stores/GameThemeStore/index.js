@@ -1,9 +1,9 @@
-import { observable, action } from 'mobx'
+import { observable, action } from 'mobx';
 
 class GameThemeStore {
     @observable selectedTheme
     constructor() {
-        this.selectedTheme = GameThemeStore.themeOptions.dark
+        this.selectedTheme = GameThemeStore.themeOptions.dark;
     }
     static themeOptions = {
         dark: {
@@ -29,14 +29,14 @@ class GameThemeStore {
     }
     @action.bound
     setCurrentTheme() {
-        const { name } = this.selectedTheme
+        const { name } = this.selectedTheme;
         if (name === "Dark") {
-            this.selectedTheme = GameThemeStore.themeOptions.light
+            this.selectedTheme = GameThemeStore.themeOptions.light;
         }
         else {
-            this.selectedTheme = GameThemeStore.themeOptions.dark
+            this.selectedTheme = GameThemeStore.themeOptions.dark;
         }
     }
 }
-const themeStore = new GameThemeStore()
-export default themeStore
+const themeStore = new GameThemeStore();
+export default themeStore;
