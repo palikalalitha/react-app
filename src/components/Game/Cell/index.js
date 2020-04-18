@@ -12,7 +12,6 @@ class Cell extends React.Component {
     @observable shouldShowHiddenCells
     @observable isClickedOnCell
     @observable isDisable
-    @observable timer
     constructor(props) {
         super(props);
         const { isHidden } = this.props.eachCell;
@@ -34,9 +33,9 @@ class Cell extends React.Component {
     render() {
 
         const { eachCell, selectedTheme, gridWidth, gridSize } = this.props;
-        const width = (gridWidth / gridSize) - spaceBetweenCellsSize;
         const { isHidden } = eachCell;
         const { shouldShowHiddenCells, isClickedOnCell, isDisable } = this;
+        const width = (gridWidth / gridSize) - spaceBetweenCellsSize;
         return (
             <div>
             <CellContainer selectedTheme={selectedTheme} gridWidth={width} isDisable={isDisable} onClick={this.onClick}>

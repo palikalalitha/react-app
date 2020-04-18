@@ -1,4 +1,4 @@
-import { observable, action } from "mobx"
+import { observable, action } from "mobx";
 
 import GridBox from "../../components/Game/GridBox.json";
 import Cell from "../Model/Cell/";
@@ -29,10 +29,12 @@ class GameStore {
     @action.bound
     setGridCells() {
         const { gridSize, hiddenCellCount } = GridBox[this.level];
-        const userTimer = (gridSize * 2) * seconds;
+        const userPlayingTime = (gridSize * 2) * seconds;
+
         for (let i = 0; i < gridSize * gridSize; i++) {
             this.currentLevelGridCells.push(new Cell(Math.random(), false));
         }
+
         const randomCells = this.currentLevelGridCells.slice().sort(() => Math.random() - 0.5);
         randomCells.splice(hiddenCellCount);
         randomCells.map(eachRandomId => {
@@ -42,8 +44,9 @@ class GameStore {
                 }
             })
         })
-        cellTimeout = setTimeout(() => this.goToInitialLevelAndUpdateCells(), userTimer);
+        cellTimeout = setTimeout(() => this.goToInitialLevelAndUpdateCells(), userPlayingTime);
     }
+
     @action.bound
     goToNextLevelAndUpdateCells() {
         clearTimeout(cellTimeout);
@@ -51,10 +54,11 @@ class GameStore {
         this.currentLevelGridCells = [];
         this.setGridCells();
         this.resetSelectedCellsCount();
-        if (this.level === finalLevel) {
+        if (this.level === 1) {
             this.isGameCompleted = true;
         }
     }
+
     @action.bound
     goToInitialLevelAndUpdateCells() {
         clearTimeout(cellTimeout);
@@ -64,29 +68,34 @@ class GameStore {
         this.resetSelectedCellsCount();
         this.setGridCells();
     }
+
     @action.bound
     resetSelectedCellsCount() {
         this.selectedCellsCount = 0;
     }
+
     @action.bound
     incrementSelectedCellsCount() {
         const { hiddenCellCount } = GridBox[this.level];
         this.selectedCellsCount++;
         if (this.selectedCellsCount === hiddenCellCount) {
-            setTimeout(() => this.goToNextLevelAndUpdateCells(), timeDelay);
+            setTimeout(this.goToNextLevelAndUpdateCells(), timeDelay);
         }
     }
+
     @action.bound
     onPlayAgainClick() {
         this.setTopLevel();
         this.resetGame();
 
     }
+
     @action.bound
     resetGame() {
         this.goToInitialLevelAndUpdateCells();
         this.isGameCompleted = false;
     }
+
     @action.bound
     setTopLevel() {
         const { level, topLevel } = this;

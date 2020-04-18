@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+
 import tw from 'tailwind.macro'
 
 const CellContainer = styled.div `${tw`m-1 bg-blue-900 `} 
@@ -13,7 +14,7 @@ width:${props=>props.isClicked?props.gridWidth+"px":"0px"};
 height:${props=>props.isClicked?props.gridWidth+"px":"0px"};
 background-color:${props=>props.selectedTheme.cellActive};
 transfrom:translate(25%,25%);
-transition-duration:0.25s;`;
+transition-duration:0.2s;`;
 
 const Cells2 = styled.div `${tw``}
 width:${props=>props.isClicked?props.gridWidth+"px":"0px"};

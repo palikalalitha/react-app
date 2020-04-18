@@ -12,7 +12,7 @@ class GameResult extends React.Component {
         gameStore.onPlayAgainClick();
     }
     render() {
-        const { level,gridWidth } = this.props;
+        const { level, gridWidth } = this.props;
         return (
             <GameResultContainer gridWidth={gridWidth}>
             <LevelText>{level}</LevelText>
