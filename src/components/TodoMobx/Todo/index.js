@@ -27,7 +27,7 @@ import { TodoListContainer, CheckBoxElement, StikeTextBox, NormalTextBox } from 
             <div>
             <TodoListContainer>
                 <input type="checkbox" onClick={this.onCompleteTodo} defaultChecked={checkedId} />
-                <input type="text" defaultValue={todo.title} style={checkedId?stikeTextStles:normalText} onKeyDown={this.onUpdateTodoTitle}/>
+                <input type="text" defaultValue={todo.title} disabled={checkedId} style={checkedId?stikeTextStles:normalText} onKeyDown={this.onUpdateTodoTitle}/>
                 <button style={close} onClick={this.onRemoveTodo}>&times;</button>
             </TodoListContainer>
             </div>)

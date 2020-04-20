@@ -1,4 +1,5 @@
 import React from "react"
+
 import { observable, action } from "mobx"
 //import { observer } from "mobx-react"
 import store from "../../../stores/TodoStore/index"
@@ -10,7 +11,7 @@ class AddTodo extends React.Component {
     onChangeInput(event) {
         if (event.keyCode === 13) {
             let userInput = event.target.value
-            store.onAddTodo(userInput)
+            store.onAddTodo(userInput, false)
             event.target.value = ""
         }
         this.todoTitle = event.target.value

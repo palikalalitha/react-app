@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
-import { observer } from 'mobx-react'
-import counter from "../../stores/CounterStore"
-import { CounterContainer, IncrementButton } from "./styles"
+import React from "react";
+import { observer } from 'mobx-react';
 
-let regex = /^[0-9]*$/
-@observer class CounterApp extends Component {
+import counter from "../../stores/CounterStore";
+import { CounterContainer, IncrementButton } from "./styles";
 
+//let regex = /^[0-9]*$/
+@observer
+class CounterApp extends React.Component {
   increment = () => {
     counter.incrementCounter()
   }
@@ -27,7 +28,7 @@ let regex = /^[0-9]*$/
       </CounterContainer>)
   }
 }
-
+export default CounterApp
 
 
 
@@ -73,5 +74,3 @@ let regex = /^[0-9]*$/
 //     )
 //   }
 // }
-
-export default CounterApp

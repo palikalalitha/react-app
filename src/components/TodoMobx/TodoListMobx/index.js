@@ -7,16 +7,14 @@ import Todo from "../Todo/index.js"
 @observer
 class TodoListMobx extends React.Component {
     render() {
-        const count = store.getActiveTodoCounts()
         const todos = store.filteredTodos
-        let c;
+        const count = todos.length
+        const selectedFilter=store.selectedFilter
         return (
             <div>
-    
-            <p>{c}</p>
             {todos.map(item=>
             <Todo todo={item} key={item.id}/>)}
-            {count?<TodoFooter todoCount={count}/>:""}
+            {count?<TodoFooter todos={todos} selectedFilter={selectedFilter} todoCount={count}/>:""}
             </div>)
     }
 }

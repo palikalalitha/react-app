@@ -1,11 +1,12 @@
-
 import React from "react"
 import { observable } from "mobx"
 import { observer } from "mobx-react"
 import eventObj from "../../../stores/EventStore"
 import EventList from "../EventList/index"
 import { EventContainer, EventInputBox, AddEventButton, TextBoxContainer } from "./styles.js"
-@observer class AddEvent extends React.Component {
+
+@observer
+class AddEvent extends React.Component {
     @observable eventName
     @observable eventLocation
     onAddEvent = () => {

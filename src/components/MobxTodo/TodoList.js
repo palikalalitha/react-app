@@ -16,9 +16,9 @@ import { observer } from "mobx-react"
         this.todo.todoCount++;
     }
     addTodoItems = (input, footerState) => {
-        this.todo.todoList = input,
-            this.todo.dummy = input,
-            this.todo.footerStatus = footerState
+        this.todo.todoList = input;
+        this.todo.dummy = input;
+        this.todo.footerStatus = footerState
 
     }
     addTodoList = (event) => {
@@ -70,9 +70,9 @@ import { observer } from "mobx-react"
         this.updateTodo(a)
     }
     updateTodo = (newTodos) => {
-        this.todo.dummy = newTodos,
-            this.todo.todoList = newTodos,
-            this.todo.todoCount = newTodos.length
+        this.todo.dummy = newTodos;
+            this.todo.todoList = newTodos;
+            this.todo.todoCount = newTodos.length;
     }
     clearCompleted = () => {
         let s = this.todo.dummy.filter(item => !item.todoChecked)

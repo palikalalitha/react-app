@@ -54,7 +54,7 @@ class GameStore {
         this.currentLevelGridCells = [];
         this.setGridCells();
         this.resetSelectedCellsCount();
-        if (this.level === 1) {
+        if (this.level === finalLevel) {
             this.isGameCompleted = true;
         }
     }
