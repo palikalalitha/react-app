@@ -1,8 +1,9 @@
 import React from "react"
 import store from "../../../stores/TodoStore/index.js"
 import { observer } from "mobx-react"
-import { TodoListContainer, CheckBoxElement, StikeTextBox, NormalTextBox } from "./styles.js"
-@observer class Todo extends React.Component {
+import { TodoListContainer } from "./styles.js"
+@observer
+class Todo extends React.Component {
     constructor(props) {
         super(props)
     }

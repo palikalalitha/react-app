@@ -1,5 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider } from "mobx-react"
+
+import stores from "./stores"
 import Home from "./components/home.js"
 import { CountryDashboardApp } from "./components/countries/countryDashboardApp.js"
 import { CarsList } from './components/CarsList'
@@ -12,7 +15,6 @@ import { DisableButton } from './components/forms/disableButton.js'
 import Practice from './components/practice.js'
 import { FormComponents } from './components/forms/formComponents.js'
 import { CheckboxWithLabel } from './components/forms/CheckboxWithLabel.js'
-
 import CountryDetails from './components/countries/countryDetails.js'
 import Game from "./components/emojis/game.js"
 import NavBar from './components/forms/navbar.js'
@@ -21,6 +23,8 @@ import GridMemoryGame from "./components/Game/GridMemoryGame/index.js"
 import TodoApp from "./components/TodoMobx/TodoApp/index.js"
 import MobxPractice from "./components/MobxPractice/index.js"
 import EventApp from "./components/Event/EventApp/index.js"
+
+import UsersPage from "./components/UsersPage/"
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
 import './components/countries/countries.css'
@@ -31,9 +35,15 @@ import "./App.css";
 
 class App extends React.Component {
     render() {
+
         return (
+            <Provider {...stores}>    
             <Router basename={process.env.PUBLIC_URL}>
         <Switch>
+    
+    <Route exact path="/users" component={UsersPage}/>
+    
+    
                     <Route path="/grid-game">
             <NavBar title="Memory Game"/>
             <GridMemoryGame/>
@@ -106,7 +116,8 @@ class App extends React.Component {
             <Home/>
             </Route>
           </Switch>
-    </Router>);
+    </Router>
+    </Provider>);
     };
 }
 

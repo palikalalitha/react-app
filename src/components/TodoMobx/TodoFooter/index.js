@@ -1,7 +1,9 @@
 import React from "react"
+import { observer } from "mobx-react"
+
 import store from "../../../stores/TodoStore/index"
 import { TodoFooterContainer } from "./styles"
-
+@observer
 class TodoFooter extends React.Component {
 
     onChangeSelectedFilter = (event) => {
@@ -12,9 +14,8 @@ class TodoFooter extends React.Component {
         store.onClearCompleted()
     }
     render() {
-        const { todoCount, selectedFilter, todos } = this.props
-        console.log(selectedFilter)
-        console.log(todos)
+        const { todoCount } = this.props
+        console.log(todoCount)
         return (
             <div>
             <TodoFooterContainer>

@@ -6,5 +6,5 @@ export const NoDataViewContainer = styled.div`
 `;
 
 export const NoDataViewText = styled.p`
-  ${tw`text-xl`}
+  ${tw` text-center text-xl`}
 `;
