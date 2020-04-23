@@ -22,6 +22,7 @@ class TodoApp extends React.Component {
         store.getTodoList()
     }
     renderSuccessUI() {
+        const { todos } = store
         return (<TodoMain  store={store}/>);
     }
     render() {

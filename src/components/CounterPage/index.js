@@ -21,6 +21,7 @@ class CounterApp extends React.Component {
   }
   render() {
     return (
+
       <CounterContainer>
       <IncrementButton onClick={this.increment}><h1>+</h1></IncrementButton>
 <input  className="text-2xl font-bold w-26 h-16 m-2 border-red  border-solid border text-center" type="number" onChange={this.onChangeCount} value={counter.count}/>
