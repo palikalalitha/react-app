@@ -1,19 +1,26 @@
 import React from 'react'
-//import image from './back-icon.svg'
-//import { NavBar } from '/components/forms/navbar.js'
 import NavBar from './forms/navbar'
 import {
     BrowserRouter as Router,
-    Link
+    Link,
+    Redirect
 }
 from "react-router-dom";
 class Home extends React.Component {
+
     render() {
+        // if (true) {
+        //     return this.gotoGridGame()
+        // }
         return (
             <div>
             <NavBar title="Assignments"/>
             <nav>
             <ul>
+                <li>
+                    <Link to="/ecommerce-store/sign-in/">E-Commerce App</Link >
+                </li>
+                      
                 <li>
                     <Link to="/carlist">Car list</Link >
                 </li>
@@ -52,7 +59,7 @@ class Home extends React.Component {
                 </li>
     
             </ul>
-        </nav>        
+        </nav>     
     </div>)
     }
 }

@@ -9,6 +9,8 @@ import { apiMethods } from "../../constants/APIConstants"
 //import UserService from "../../services/UserService/index.fixture"
 import UserFixtureService from "../../services/UserService/index.fixture"
 
+
+
 class UserStore {
     @observable getUsersApiStatus
     @observable getUserApiError

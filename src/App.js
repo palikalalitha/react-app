@@ -1,8 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "mobx-react"
 
 import stores from "./stores"
+import authStore from "./Authentication/stores/AuthStore"
 import Home from "./components/home.js"
 import { CountryDashboardApp } from "./components/countries/countryDashboardApp.js"
 import { CarsList } from './components/CarsList'
@@ -23,8 +24,16 @@ import GridMemoryGame from "./components/Game/GridMemoryGame/index.js"
 import TodoApp from "./components/TodoMobx/TodoApp/index.js"
 import MobxPractice from "./components/MobxPractice/index.js"
 import EventApp from "./components/Event/EventApp/index.js"
-
+import LoginPage from "./components/LoginPage/index.js"
 import UsersPage from "./components/UsersPage/"
+import { SignInPage } from "./Authentication/components/SignInPage/index.js"
+import SignOutPage from "./Authentication/components/SignOutPage/SignOutPage.js"
+import Header from "./ECommerceApp/components/Header/Header.js"
+import ProductsPage from "./ECommerceApp/components/ProductsPage/ProductsPage.js"
+//import { ProtectedRoute } from "../Authentication/components/ProtectedRoute/ProtectedRoute"
+import authenticationRoutes from "./Authentication/routes"
+import productRoutes from "./ECommerceApp/routes"
+
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
 import './components/countries/countries.css'
@@ -35,20 +44,36 @@ import "./App.css";
 
 class App extends React.Component {
     render() {
-
         return (
-            <Provider {...stores}>    
-            <Router basename={process.env.PUBLIC_URL}>
-        <Switch>
-    
-    <Route exact path="/users" component={UsersPage}/>
-    
-    
-                    <Route path="/grid-game">
+            <Provider >
+                <Router>
+                  <Switch> {authenticationRoutes}
+                      {productRoutes}
+                    <Route exact path="/" component={Home}/>
+                     
+                  <Route path="/grid-game" component={GridMemoryGame}/>
+                  <Route path="/header" component={Header}/>
+                   
+                  <Route path="/signout" component={SignOutPage}/>
+               
+                </Switch>
+                </Router>
+            </Provider>
+
+
+
+            /*<Provider {...stores}>    
+        <Router basename={process.env.PUBLIC_URL}>
+            <Switch>
+            
+            <Route exact path="/users" component={UsersPage}/>
+            <Route exact path="/shopping" component={SignInPage}/>
+            
+            <Route exact path="/login" component={LoginPage}/>
+            <Route path="/grid-game">
             <NavBar title="Memory Game"/>
             <GridMemoryGame/>
             </Route>
-        
             <Route path="/mobxStoreTodoApp">
             <NavBar title="Todo List"/>
             <TodoApp/>
@@ -112,12 +137,13 @@ class App extends React.Component {
                 <NavBar title="Emooji Game"/>
             <Game/>
             </Route>
-            <Route path="/">
+            <Route path="/home">
             <Home/>
             </Route>
           </Switch>
     </Router>
-    </Provider>);
+    </Provider>*/
+        );
     };
 }
 

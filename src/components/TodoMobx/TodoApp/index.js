@@ -3,7 +3,7 @@ import { observer } from "mobx-react"
 
 import store from "../../../stores/TodoStore/index.js"
 
-import LoadingWrapperWithFailure from "../../common/LoadingWrapperWithFailure"
+import LoadingWrapperWithFailure from "../../../components/common/LoadingWrapperWithFailure"
 
 import NoDataView from "../../common/NoDataView"
 

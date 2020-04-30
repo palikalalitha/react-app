@@ -1,0 +1,70 @@
+src/Authentication
+-components
+    -SignInForm 
+        =>index.js
+        =>SignInForm.js
+        =>styledComponent.js
+        
+-stores
+    variables
+        isLogin
+     methods
+        -onSubmit
+        
+        
+
+src/Shopping
+-components
+    -ECommerce
+            -Header
+                =>index.js
+                =>Header.js
+                =>styledComponent.js
+            -FilterBar
+                =>index.js
+                =>FilterBar.js
+            -SizeChart
+                =>index.js
+                =>SizeChart.js
+            -AddCartPage
+                =>index.js
+                =>AddCartPage.js
+                =>styledComponent.js
+            -Products
+                =>index.js
+                =>Products.js
+                =>styledComponent.js
+        =>index.js
+        =>ECommerce.js
+        =>styledComponent.js
+           
+-routes
+    
+-services
+-utils
+-constants
+-styledComponents
+
+              
+-stores
+        variables
+            shirtSize
+            sortPriceOrder
+            products
+        
+        methods
+            -sortedByPrice
+            -filterByShirtSize
+            -onAddtoCart
+            -onCheckOut
+            
+    -Models
+        =>ProductModel
+            -ProductModel.js
+                variables
+                product obj
+        
+        
+        
+        
+doubts

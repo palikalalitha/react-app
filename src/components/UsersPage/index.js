@@ -12,7 +12,6 @@ import NoDataView from "../common/NoDataView"
 @observer
 class UsersPage extends Component {
 
-
     componentDidMount() {
         this.doNetworkCalls()
     }
