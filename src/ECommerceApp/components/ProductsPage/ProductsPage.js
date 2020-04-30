@@ -69,8 +69,6 @@ class ProductsPage extends React.Component {
     })
 
     render() {
-
-        console.log("helo page")
         const { getProductListAPIStatus, sortedAndFilteredProducts, totalNoOfProductsDisplayed, getProductListAPIError, onSelectSize } = productStore;
         const productsCount = totalNoOfProductsDisplayed
         return (
@@ -81,7 +79,6 @@ class ProductsPage extends React.Component {
                     <SizeFilter onSelectSize={this.onSelectSize}/>
                     <Products>
                         <Header productsCount={productsCount} onSelectSortBy={this.onSelectSortBy}/>
-                        
                           <LoadingWrapperWithFailure apiStatus={getProductListAPIStatus}
                             apiError={getProductListAPIError} onRetryClick={this.doNetworkCalls}
                             renderSuccessUI={this.renderSuccessUI}/>

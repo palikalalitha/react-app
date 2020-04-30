@@ -50,7 +50,7 @@ class SignInPage extends React.Component {
 
     }
     doNetworkCalls() {
-        authStore.userSignIn();
+
     }
     onClickSignIn = async() => {
         if (!this.username) {
@@ -61,7 +61,7 @@ class SignInPage extends React.Component {
         }
         else {
             alert("signin")
-            await this.doNetworkCalls()
+            await authStore.userSignIn();
             this.props.history.push("/ecommerce-store/products/")
             //this.gotoNextPage()
         }

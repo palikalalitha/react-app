@@ -22,12 +22,16 @@ class CartItem extends React.Component {
         const productDetails = getProductDetailsById(productId)
         const { imageURL, title, printStyle, price, currencyFormat } = productDetails[0]
         return (
-
+            <div>
+             <hr/>
             <CartItemContainer>
+            
                <RemoveItemButton onClick={this.onRemoveCartItem}>X</RemoveItemButton>
+              
                <ProductImage src={imageURL}/>
                 <ProductDescriptionContainer>
-                   <ProductTitle>{title}
+                   <ProductTitle>
+                   {title}
                    </ProductTitle>
                    <ProductStyle>{printStyle}
                    </ProductStyle>
@@ -35,10 +39,9 @@ class CartItem extends React.Component {
                  </ProductDescriptionContainer>
                  <ProductPrice>{currencyFormat} {price}
                  </ProductPrice>
+                 
             </CartItemContainer>
-
-
-
+</div>
         )
 
     }

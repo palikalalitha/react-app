@@ -2,10 +2,12 @@ import styled from "@emotion/styled"
 import tw from "tailwind.macro"
 
 
-const Products = styled.div `${tw`flex flex-col justify-between border hover:border-gray-700
+const Products = styled.div `${tw`flex flex-col justify-between border 
 border-transparent border-solid w-48 m-2 items-center p-1 relative`}`;
 
-const FreeShippingView = styled.p `${tw`absolute top-10 bg-black right-0  p-1 text-xs text-white`}`;
+const FreeShippingView = styled.p `${tw`absolute bg-black text-xs text-white`}
+top:"17px";
+right:-15px`;
 const ProductImageElement = styled.img `${tw`w-4/5 object-contain mb-2`}`;
 
 const ProductTitle = styled.p `${tw`h-45px text-center`}`

@@ -61,7 +61,6 @@ class ProductCart extends React.Component {
                     <CartList cartProductList={cartProductList} cartLength={cartLength}
                     getProductDetailsById={getProductDetailsById} onRemoveCartItem={onRemoveCartItem}/>
                     </CartItemsContainer>
-                 
                </CartContainer>
                  <SubTotal total={total} clearCart={clearCart}/>
               

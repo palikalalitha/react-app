@@ -18,7 +18,7 @@ class Home extends React.Component {
             <nav>
             <ul>
                 <li>
-                    <Link to="/ecommerce-store/sign-in/">E-Commerce App</Link >
+                    <Link to="/ecommerce-store/products/">E-Commerce App</Link >
                 </li>
                       
                 <li>

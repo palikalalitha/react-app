@@ -11,6 +11,7 @@ class CartList extends React.Component {
         const { cartProductList, onRemoveCartItem, getProductDetailsById, cartLength } = this.props
         return (
             <CartListContainer>
+            
                   {cartLength===0?
                   <CartEmpty>Add some products in the cart</CartEmpty>:
                   cartProductList.map(eachItem =>

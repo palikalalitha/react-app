@@ -25,7 +25,7 @@ class Product extends React.Component {
         const { onClickAddToCart } = this.props
         const { productItem } = this.props;
         onClickAddToCart(productItem.productId)
-        toast.warn("Addde to cart !", {
+        toast.success("Addde to cart !", {
             position: toast.POSITION.BOTTOM_CENTER,
             // className: "text-center"
         });

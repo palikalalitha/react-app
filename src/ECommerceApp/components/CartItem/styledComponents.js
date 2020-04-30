@@ -6,9 +6,11 @@ const CartItemContainer = styled.div `${tw`flex text-sm my-2 items-center relati
 const RemoveItemButton = styled.button `${tw`font-bold absolute top-0 right-0`}`;
 
 const ProductImage = styled.img `${tw`w-12 object-contain`}`
+
 const ProductDescriptionContainer = styled.div `${tw`ml-2 flex-1`}`
 
-const ProductTitle = styled.h3 `${tw`text-white`}`
+const ProductTitle = styled.h3 `${tw`text-white`}
+margin:0px`
 
 const ProductStyle = styled.p `${tw`text-gray-500 text-xs`}`
 

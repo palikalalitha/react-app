@@ -47,10 +47,10 @@ class App extends React.Component {
         return (
             <Provider >
                 <Router>
-                  <Switch> {authenticationRoutes}
-                      {productRoutes}
+                  <Switch>
+                  {authenticationRoutes}
+                {productRoutes}
                     <Route exact path="/" component={Home}/>
-                     
                   <Route path="/grid-game" component={GridMemoryGame}/>
                   <Route path="/header" component={Header}/>
                    
