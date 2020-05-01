@@ -17,7 +17,7 @@ const CartImageHeader = styled.div `${tw`flex items-center justify-center`}`
 
 const CartImageContainer = styled.div `${tw`h-10 mr-4`}`
 
-const CartImage = styled.img `${tw``}`
+const CartImage = styled.img `${tw`items-center`}`
 
 const CartImageView = styled.div `${tw`bg-gray-800 p-2 flex cursor-pointer `}
 height: 56px`;

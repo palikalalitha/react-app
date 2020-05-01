@@ -49,13 +49,11 @@ class App extends React.Component {
                 <Router>
                   <Switch>
                   {authenticationRoutes}
-                {productRoutes}
+                  {productRoutes}
                     <Route exact path="/" component={Home}/>
                   <Route path="/grid-game" component={GridMemoryGame}/>
                   <Route path="/header" component={Header}/>
-                   
-                  <Route path="/signout" component={SignOutPage}/>
-               
+                 
                 </Switch>
                 </Router>
             </Provider>

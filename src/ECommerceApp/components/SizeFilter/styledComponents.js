@@ -7,33 +7,9 @@ const Heading = styled.p `${tw`my-4 font-bold `}`
 
 const Button = styled.button `${tw`
 rounded-full h-10 w-10 m-1 focus:outline-none `}
-background-color:${props=>props.isSelected6?"black":"silver"};
+background-color:${props=>props.isSelected?"black":"silver"};
 color:${props=>props.isSelected?"white":"black"};`;
 
-const ExtraSmallSizeButton = styled.button `${tw`
-rounded-full h-10 w-10 m-1 focus:outline-none `}
-background-color:${props=>props.isSelected1?"black":"silver"};
-color:${props=>props.isSelected?"white":"black"};`;
-
-const SmallSizeButton = styled.button `${tw`
-rounded-full h-10 w-10 m-1 focus:outline-none `}
-background-color:${props=>props.isSelected2?"black":"silver"};
-color:${props=>props.isSelected?"white":"black"};`;
-
-const LargeButton = styled.button `${tw`
-rounded-full h-10 w-10 m-1 focus:outline-none `}
-background-color:${props=>props.isSelected3?"black":"silver"};
-color:${props=>props.isSelected?"white":"black"};`;
-
-const ExtraLargeButton = styled.button `${tw`
-rounded-full h-10 w-10 m-1 focus:outline-none `}
-background-color:${props=>props.isSelected4?"black":"silver"};
-color:${props=>props.isSelected?"white":"black"};`;
-
-const MediumSizeButton = styled.button `${tw`
-rounded-full h-10 w-10 m-1 focus:outline-none `}
-background-color:${props=>props.isSelected5?"black":"silver"};
-color:${props=>props.isSelected?"white":"black"};`;
 
 
 const SignOutButton = styled.button `${tw`border border-solid border-gray-800  p-1 rounded text-xs
@@ -51,9 +27,5 @@ export {
     Button,
     CartView,
     ProductsContainer,
-    ExtraSmallSizeButton,
-    SmallSizeButton,
-    LargeButton,
-    MediumSizeButton,
-    ExtraLargeButton
+    
 }

@@ -25,7 +25,7 @@ class Product extends React.Component {
         const { onClickAddToCart } = this.props
         const { productItem } = this.props;
         onClickAddToCart(productItem.productId)
-        toast.success("Addde to cart !", {
+        toast.info("Add to cart", {
             position: toast.POSITION.BOTTOM_CENTER,
             // className: "text-center"
         });
@@ -45,7 +45,7 @@ class Product extends React.Component {
         const installementAmount = (price / installmentsCount).toFixed(2)
         return (
             <LazyLoad height={20}> 
-            <Products id={productId} >
+            <Products  >
             {isFreeShipping?<FreeShippingView>Free shipping</FreeShippingView>:""}
             <ProductImageElement src={imageURL} alt={title}/>
                     <ProductTitle>{title}</ProductTitle>

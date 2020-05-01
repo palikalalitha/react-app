@@ -58,8 +58,8 @@ class ProductsPage extends React.Component {
     }
     renderSuccessUI = observer(() => {
         const productsCount = productStore.totalNoOfProductsDisplayed
+        const productList = productStore.sortedAndFilteredProducts
         return <div>
-      
         <ProductList onClickAddToCart={this.addCart} 
                      onSelectSortBy={this.onSelectSortBy} productsCount={productsCount} 
                      productList={this.getProducts()}/>
@@ -69,14 +69,14 @@ class ProductsPage extends React.Component {
     })
 
     render() {
-        const { getProductListAPIStatus, sortedAndFilteredProducts, totalNoOfProductsDisplayed, getProductListAPIError, onSelectSize } = productStore;
+        const { getProductListAPIStatus, sortedAndFilteredProducts,sizeFilter, totalNoOfProductsDisplayed, getProductListAPIError, onSelectSize } = productStore;
         const productsCount = totalNoOfProductsDisplayed
         return (
             <EcommerceContainer>
                 <SignOutButton onClick={this.OnClickSignOut}>SignOut</SignOutButton>
                 <ProductCart cartStore={cartStore}/>
                 <ProductsContainer>
-                    <SizeFilter onSelectSize={this.onSelectSize}/>
+                    <SizeFilter onSelectSize={this.onSelectSize} sizeFilter={sizeFilter}/>
                     <Products>
                         <Header productsCount={productsCount} onSelectSortBy={this.onSelectSortBy}/>
                           <LoadingWrapperWithFailure apiStatus={getProductListAPIStatus}

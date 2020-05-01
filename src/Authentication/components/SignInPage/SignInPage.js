@@ -1,7 +1,7 @@
 import React from "react"
 import { observable } from "mobx"
 import { observer, inject } from "mobx-react"
-import { Redirect } from "react-router-dom"
+import { Redirect, withRouter } from "react-router-dom"
 import CookieConsent from "react-cookie-consent";
 
 import { getAccessToken } from "../../utils/StorageUtils.js"
@@ -49,9 +49,6 @@ class SignInPage extends React.Component {
         }
 
     }
-    doNetworkCalls() {
-
-    }
     onClickSignIn = async() => {
         if (!this.username) {
             this.errorMessage = USERNAME_ERROR_MESSAGE
@@ -60,26 +57,16 @@ class SignInPage extends React.Component {
             this.errorMessage = PASSWORD_ERROR_MESSAGE
         }
         else {
-            alert("signin")
+            //alert("signin")
             await authStore.userSignIn();
-            this.props.history.push("/ecommerce-store/products/")
-            //this.gotoNextPage()
+            this.props.history.replace("/ecommerce-store/products")
+
         }
-    }
-    gotoNextPage = () => {
-        return (
-            <Redirect 
-            to={{
-                pathname:"/ecommerce-store/products/"
-            }}
-            />
-        );
     }
     onSubmit(event) {
         event.preventDefault()
     }
     render() {
-
         return (
             <LoginContainer>
             <CookieConsent>
@@ -89,11 +76,11 @@ class SignInPage extends React.Component {
                 <Heading>Sign in</Heading>
                 <UserName placeholder="UserName" type="text"  onChange={this.onChangeUsername} />
                <Password type="password" placeholder="Password"  onChange={this.onChangePassword}/>
-               <Submit type="button" onClick={this.onClickSignIn}>Sign in</Submit>
+               <Submit type="button" data-testid="sign-in-button" onClick={this.onClickSignIn}>Sign in</Submit>
                <ErrorMessage>{this.errorMessage}</ErrorMessage>
              </Form>
             </LoginContainer>)
     }
 
 }
-export default SignInPage;
+export default withRouter(SignInPage);

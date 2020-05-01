@@ -7,7 +7,7 @@ import {
 }
 from "../constants/RouteConstants";
 
-import SignInPage from "./SignInRoute";
+import { SignInPage } from "./SignInRoute/SignInRoute";
 
 const routes = [
     <Route exact path={SIGN_IN_PATH} component = {SignInPage}/>

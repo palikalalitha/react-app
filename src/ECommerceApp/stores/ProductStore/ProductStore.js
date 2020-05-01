@@ -97,8 +97,7 @@ class ProductStore {
             })
         })
         // list = this.productList.filter(eachProduct => {
-        //     eachProduct.availableSizes.filter(eachAvilableSize =>
-        //         this.sizeFilter.includes(eachAvilableSize).length)
+        //     eachProduct.availableSizes.filter(eachAvilableSize =>  this.sizeFilter.includes(eachAvilableSize)).length>0
         // })
         // console.log("list", list, list.length)
         // return list
@@ -106,6 +105,7 @@ class ProductStore {
         if (this.sizeFilter.length < 1) {
             return this.dummyPorducts
         }
+
         else {
             return list
         }

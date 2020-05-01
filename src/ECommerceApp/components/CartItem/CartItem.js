@@ -25,9 +25,7 @@ class CartItem extends React.Component {
             <div>
              <hr/>
             <CartItemContainer>
-            
-               <RemoveItemButton onClick={this.onRemoveCartItem}>X</RemoveItemButton>
-              
+               <RemoveItemButton  data-testid='remove-cart-item' onClick={this.onRemoveCartItem}>X</RemoveItemButton>
                <ProductImage src={imageURL}/>
                 <ProductDescriptionContainer>
                    <ProductTitle>
@@ -39,10 +37,8 @@ class CartItem extends React.Component {
                  </ProductDescriptionContainer>
                  <ProductPrice>{currencyFormat} {price}
                  </ProductPrice>
-                 
             </CartItemContainer>
-</div>
-        )
+            </div>)
 
     }
 }

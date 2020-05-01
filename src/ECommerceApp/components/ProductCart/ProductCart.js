@@ -43,11 +43,10 @@ class ProductCart extends React.Component {
         console.log(this.shouldDisplayCart)
         return (
             <CartView>
-            
              {this.shouldDisplayCart?
              <div className="h-screen flex">
               <CartContainer >
-                <CartCloseButton onClick={this.hideCart}>X</CartCloseButton>
+                <CartCloseButton data-testid='cart-close-button' onClick={this.hideCart}>X</CartCloseButton>
                 <CartItemsContainer>   
                     <CartImageHeader>
                         <CartImageContainer>
@@ -65,7 +64,7 @@ class ProductCart extends React.Component {
                  <SubTotal total={total} clearCart={clearCart}/>
               
                </div>
-               :<CartImageView   onClick={this.showCart}>
+               :<CartImageView  data-testid='cart-open-button' onClick={this.showCart}>
                         <span>
                              <CartImage src={cart} alt="cart" />
                         </span>

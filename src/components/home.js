@@ -9,9 +9,7 @@ from "react-router-dom";
 class Home extends React.Component {
 
     render() {
-        // if (true) {
-        //     return this.gotoGridGame()
-        // }
+
         return (
             <div>
             <NavBar title="Assignments"/>
