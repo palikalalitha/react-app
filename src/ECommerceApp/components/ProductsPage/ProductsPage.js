@@ -35,7 +35,7 @@ class ProductsPage extends React.Component {
         const productsCount = totalNoOfProductsDisplayed
         return (
             <EcommerceContainer>
-                <SignOutButton onClick={onClickSignOut} type="button">SignOut</SignOutButton>
+                <SignOutButton onClick={onClickSignOut} type="button">Sign Out</SignOutButton>
                 <ProductCart cartStore={cartStore}/>
                 <ProductsContainer>
                     <SizeFilter onSelectSize={onSelectSize} sizeFilter={sizeFilter}/>

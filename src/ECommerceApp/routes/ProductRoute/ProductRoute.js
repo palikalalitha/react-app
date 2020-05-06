@@ -24,7 +24,7 @@ class ProductRoute extends React.Component {
     }
     onClickSignOut = () => {
         const { history } = this.props
-        this.props.productStore.init()
+        // this.props.productStore.init()
         this.props.authStore.userSignOut()
         history.replace("/ecommerce-store/sign-in/")
     }
@@ -49,7 +49,7 @@ class ProductRoute extends React.Component {
         const { cartStore } = this.props
         const { sizeFilter, getProductListAPIStatus, getProductListAPIError, totalNoOfProductsDisplayed } = this.props.productStore
         return (
-        <ProductsPage 
+            <ProductsPage 
         onSelectSize = { this.onSelectSize }
         onClickSignOut = { this.onClickSignOut }
         doNetworkCalls={this.doNetworkCalls}

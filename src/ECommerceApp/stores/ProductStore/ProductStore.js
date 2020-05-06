@@ -4,15 +4,13 @@ import { bindPromiseWithOnSuccess } from "@ib/mobx-promise"
 import { API_INITIAL } from "@ib/api-constants"
 import Product from "../models/Product/Product.js"
 
-let products = [];
 class ProductStore {
     @observable productList
-    @observable dummyPorducts
     @observable getProductListAPIStatus
     @observable getProductListAPIError
     @observable sizeFilter
     @observable sortBy
-    @observable list
+
     productsAPIService
 
     constructor(productService) {
@@ -23,7 +21,6 @@ class ProductStore {
         this.getProductListAPIStatus = API_INITIAL
         this.getProductListAPIError = null
         this.productList = []
-        this.list = []
         this.sizeFilter = [],
             this.sortBy = "select"
     }
@@ -38,8 +35,9 @@ class ProductStore {
 
     @action.bound
     setProductListResponse(response) {
-        response.map(eachProduct => this.productList.push(new Product(eachProduct)))
-        this.dummyPorducts = this.productList
+
+        this.productList = response.map(eachProduct => { return new Product(eachProduct) })
+
     }
     @action.bound
     setGetProductListAPIError(error) {
@@ -71,21 +69,21 @@ class ProductStore {
     }
     @computed
     get sortedAndFilteredProducts() {
-        let list
+        let products
         if (this.sizeFilter.length === 0) {
-            list = [...this.productList]
+            products = [...this.productList]
         }
         else {
-            list = this.productList.filter(eachProduct => (eachProduct.availableSizes.filter(eachAvilableSize =>
+            products = this.productList.filter(eachProduct => (eachProduct.availableSizes.filter(eachAvilableSize =>
                 (this.sizeFilter.includes(eachAvilableSize)))).length > 0)
         }
         if (this.sortBy === "DESCENDING") {
-            list.sort((a, b) => b.price - a.price)
+            products.sort((a, b) => b.price - a.price)
         }
         else if (this.sortBy === "ASCENDING") {
-            list.sort((a, b) => a.price - b.price)
+            products.sort((a, b) => a.price - b.price)
         }
-        return list
+        return products
     }
     @computed
     get totalNoOfProductsDisplayed() {

@@ -31,8 +31,10 @@ class CartStore {
     }
     @action.bound
     clearCart() {
-        alert("Your products will be delvered in 3 days...")
-        this.cartProductList = []
+        if (this.cartProductList != "") {
+            alert("Your products will be delvered in 3 days...")
+            this.cartProductList = []
+        }
     }
     @action.bound
     getProductDetailsById(id) {
@@ -45,7 +47,6 @@ class CartStore {
         this.cartProductList.map(eachCart => {
             let cartDetails = this.getProductDetailsById(eachCart.productId)
             let price = cartDetails[0].price
-            console.log(eachCart.quantity)
             cartAmount += eachCart.quantity * price
         })
         return (cartAmount.toFixed(1))

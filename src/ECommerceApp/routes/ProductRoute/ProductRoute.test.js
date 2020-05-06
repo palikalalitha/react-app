@@ -15,14 +15,15 @@ import {
 }
 from "../../../ECommerceApp/constants/RouteConstants";
 
-import ProductService from "../../services/ProductService/ProductServiceAPI.js"
-import ProductStore from "../../stores/ProductStore"
+import ProductService from "../../services/ProductService/ProductServiceAPI.js";
+import ProductStore from "../../stores/ProductStore";
 
-import AuthAPI from "../../../Authentication/services/AuthService/AuthAPI.js"
-import AuthStore from "../../../Authentication/stores/AuthStore"
+import AuthAPI from "../../../Authentication/services/AuthService/AuthAPI.js";
+import AuthStore from "../../../Authentication/stores/AuthStore";
 
-import { CartStore } from "../../stores/CartStore"
-import { ProductRoute } from "."
+import { CartStore } from "../../stores/CartStore";
+import { ProductRoute } from ".";
+
 const LocationDisplay = withRouter(({ location }) => (
     <div data-testid="location-display">{location.pathname}</div>
 ));
@@ -64,7 +65,7 @@ describe("ProductRoute Tests", () => {
                 </Router>
             </Provider>
         );
-        const signOutButton = getByRole("button", { name: "SignOut" });
+        const signOutButton = getByRole("button", { name: "Sign Out" });
         fireEvent.click(signOutButton);
 
         await waitFor(() => {
@@ -74,6 +75,10 @@ describe("ProductRoute Tests", () => {
 
             expect(getByTestId("location-display")).toHaveTextContent(
                 SIGN_IN_PATH)
-                    });
+        });
     });
+    it("should test filtering products based on size", () => {
+    
+    })
+
 });
