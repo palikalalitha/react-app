@@ -9,10 +9,12 @@ import {
 }
 from "../constants/RouteConstants";
 
+//import ProductsPage from "../../ECommerceApp/routes/ProductRoute/ProductRoute";
+
 export const ProtectedRoute = (props) => {
     const { component: Component, path } = props
     if (isLoggedIn()) {
-        return <Route  component={Component} exact path={path}/>
+        return <Route  component={Component} exact path={path} />
     }
     else {
         return <Redirect to={SIGN_IN_PATH}/>

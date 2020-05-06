@@ -1,7 +1,7 @@
 import React from "react"
 import { withRouter } from "react-router-dom"
 
-import authStore from "../../stores/AuthStore/index"
+import authStore from "../../stores/index"
 
 class SignOutPage extends React.Component {
 

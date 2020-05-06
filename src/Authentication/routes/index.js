@@ -7,10 +7,10 @@ import {
 }
 from "../constants/RouteConstants";
 
-import { SignInPage } from "./SignInRoute/SignInRoute";
+import { SignInRoute } from "./SignInRoute";
 
 const routes = [
-    <Route exact path={SIGN_IN_PATH} component = {SignInPage}/>
+    <Route exact path={SIGN_IN_PATH} component = {SignInRoute}/>
 ];
 
 export default routes

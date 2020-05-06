@@ -1,20 +1,21 @@
 import { observable, action, computed } from "mobx"
-
-import productStore from "../ProductStore/index"
+import { inject } from "mobx-react"
 import CartItem from "../models/CartItem/CartItem.js"
+//@inject("productStore")
 class CartStore {
     @observable cartProductList
     @observable productStore
-    constructor() {
+    constructor(productStore) {
         this.init()
+        this.productStore = productStore
     }
     init() {
-        this.productStore = productStore
+        //this.productStore = this.props.productStore
         this.cartProductList = []
     }
     @action.bound
     onClickAddToCart(productId) {
-        
+
         if (this.cartProductList.some(each => each.productId === productId)) {
             let index = this.cartProductList.findIndex(cart => cart.productId === productId)
             this.cartProductList[index].incrementQuantity()

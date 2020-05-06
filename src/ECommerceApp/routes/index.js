@@ -5,10 +5,9 @@ import {
 }
 from "../constants/RouteConstants";
 import { ProtectedRoute } from "./../../common/PortectedRoute/ProtectedRoute.js"
-import ProductsPage from "./ProductRoute/ProductRoute";
-
+import { ProductRoute } from "./ProductRoute"
 const routes = [
-    <ProtectedRoute  path={PRODUCT_PATH} component = {ProductsPage}/>
+    <ProtectedRoute  path={PRODUCT_PATH} component = {ProductRoute}/>
 ];
 
 export default routes

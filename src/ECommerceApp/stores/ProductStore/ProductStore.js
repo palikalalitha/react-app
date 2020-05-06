@@ -5,7 +5,6 @@ import { API_INITIAL } from "@ib/api-constants"
 import Product from "../models/Product/Product.js"
 
 let products = [];
-let list = []
 class ProductStore {
     @observable productList
     @observable dummyPorducts
@@ -13,6 +12,7 @@ class ProductStore {
     @observable getProductListAPIError
     @observable sizeFilter
     @observable sortBy
+    @observable list
     productsAPIService
 
     constructor(productService) {
@@ -23,6 +23,7 @@ class ProductStore {
         this.getProductListAPIStatus = API_INITIAL
         this.getProductListAPIError = null
         this.productList = []
+        this.list = []
         this.sizeFilter = [],
             this.sortBy = "select"
     }
@@ -53,18 +54,6 @@ class ProductStore {
     @action.bound
     onChangeSortBy(order) {
         this.sortBy = order
-        let list = [...this.productList]
-        switch (order) {
-            case "ASCENDING":
-                list.sort((a, b) => a.price - b.price);
-                this.productList = list
-                break;
-            case "DESCENDING":
-                list.sort((a, b) => b.price - a.price)
-                this.productList = list
-                break;
-        }
-
     }
 
     @action.bound
@@ -75,67 +64,32 @@ class ProductStore {
         else {
             this.sizeFilter.push(size)
         }
-        this.productList = this.updateproducts()
-
-    }
-    @action.bound
-    updateproducts() {
-        products = [...this.dummyPorducts]
-        list = []
-        this.sizeFilter.filter(eachSize => {
-            products.filter(eachProduct => {
-                let sizes = eachProduct.availableSizes
-                sizes.filter(eachAvilableSize => {
-                    if (eachSize === eachAvilableSize) {
-                        if (!(list.includes(eachProduct))) {
-
-                            list.push(eachProduct)
-                        }
-                    }
-                })
-
-            })
-        })
-        // list = this.productList.filter(eachProduct => {
-        //     eachProduct.availableSizes.filter(eachAvilableSize =>  this.sizeFilter.includes(eachAvilableSize)).length>0
-        // })
-        // console.log("list", list, list.length)
-        // return list
-
-        if (this.sizeFilter.length < 1) {
-            return this.dummyPorducts
-        }
-
-        else {
-            return list
-        }
     }
     @computed
     get products() {
-        return this.productList
-
+        return this.sortedAndFilteredProducts
     }
     @computed
     get sortedAndFilteredProducts() {
-        const { sortBy, sizeFilter } = this
-        if (this.sortBy === "select" && this.sizeFilter.length === 0) {
-            return this.dummyPorducts
+        let list
+        if (this.sizeFilter.length === 0) {
+            list = [...this.productList]
         }
-        else if (this.sortBy === "DESCENDING" && this.sizeFilter.length > 1) {
-            //this.updateproducts()
-            return this.updateproducts().slice().sort((a, b) => b.price - a.price)
+        else {
+            list = this.productList.filter(eachProduct => (eachProduct.availableSizes.filter(eachAvilableSize =>
+                (this.sizeFilter.includes(eachAvilableSize)))).length > 0)
         }
-        else if (this.sortBy === "ASCENDING" && this.sizeFilter.length > 1) {
-            this.updateproducts()
-            return this.productList.slice().sort((a, b) => a.price - b.price)
+        if (this.sortBy === "DESCENDING") {
+            list.sort((a, b) => b.price - a.price)
         }
-        else if (sortBy === "select" && this.sizeFilter.length > 1) {
-            return this.updateproducts()
+        else if (this.sortBy === "ASCENDING") {
+            list.sort((a, b) => a.price - b.price)
         }
+        return list
     }
     @computed
     get totalNoOfProductsDisplayed() {
-        return this.productList.length
+        return this.sortedAndFilteredProducts.length
     }
 
 }

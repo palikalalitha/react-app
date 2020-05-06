@@ -40,7 +40,6 @@ class ProductCart extends React.Component {
         const { cartProductList, noOfProductsInCart, onRemoveCartItem, getProductDetailsById, totalCartAmount, clearCart } = this.props.cartStore
         const cartLength = noOfProductsInCart
         const total = totalCartAmount
-        console.log(this.shouldDisplayCart)
         return (
             <CartView>
              {this.shouldDisplayCart?

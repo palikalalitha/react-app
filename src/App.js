@@ -3,7 +3,6 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "mobx-react"
 
 import stores from "./stores"
-import authStore from "./Authentication/stores/AuthStore"
 import Home from "./components/home.js"
 import { CountryDashboardApp } from "./components/countries/countryDashboardApp.js"
 import { CarsList } from './components/CarsList'
@@ -29,10 +28,10 @@ import UsersPage from "./components/UsersPage/"
 import { SignInPage } from "./Authentication/components/SignInPage/index.js"
 import SignOutPage from "./Authentication/components/SignOutPage/SignOutPage.js"
 import Header from "./ECommerceApp/components/Header/Header.js"
-import ProductsPage from "./ECommerceApp/components/ProductsPage/ProductsPage.js"
-//import { ProtectedRoute } from "../Authentication/components/ProtectedRoute/ProtectedRoute"
 import authenticationRoutes from "./Authentication/routes"
 import productRoutes from "./ECommerceApp/routes"
+import HiddenMessage from "./testingPractice1/test.js"
+import OnChange from "./testingPractice2/OnChange.js"
 
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
@@ -45,102 +44,94 @@ import "./App.css";
 class App extends React.Component {
     render() {
         return (
-            <Provider >
+            <Provider  {...stores}>
                 <Router>
                   <Switch>
-                  {authenticationRoutes}
-                  {productRoutes}
+                    {authenticationRoutes}
+                    {productRoutes}
+                    <Route exact path="/testing">
+                    <HiddenMessage children="hii gud mrng"/>
+                    </Route>
+                    <Route exact path="/OnChange" component={OnChange}/>
+                    
                     <Route exact path="/" component={Home}/>
-                  <Route path="/grid-game" component={GridMemoryGame}/>
-                  <Route path="/header" component={Header}/>
-                 
-                </Switch>
-                </Router>
-            </Provider>
-
-
-
-            /*<Provider {...stores}>    
-        <Router basename={process.env.PUBLIC_URL}>
-            <Switch>
+                    <Route path="/grid-game" component={GridMemoryGame}/>
+                    <Route path="/header" component={Header}/>
+                    
             
-            <Route exact path="/users" component={UsersPage}/>
-            <Route exact path="/shopping" component={SignInPage}/>
-            
-            <Route exact path="/login" component={LoginPage}/>
-            <Route path="/grid-game">
-            <NavBar title="Memory Game"/>
-            <GridMemoryGame/>
-            </Route>
-            <Route path="/mobxStoreTodoApp">
-            <NavBar title="Todo List"/>
-            <TodoApp/>
-            </Route>
-            <Route path="/counter-page">
-            <NavBar title="Counter"/>
-            <CounterApp/>
-            </Route>
-            <Route path="/carlist">
-            <NavBar title="Car List"/>
-             <CarsList/>
-            </Route>
-            <Route path="/eventlist">
-            <NavBar title="Event List"/>
-            <EventApp/>
-            </Route>
-            <Route path="/todolist">
-                <NavBar title="Todo List"/>
-              <Todo />
-            </Route>
-            <Route path="/mobxtodolist">
-                <NavBar title="Mobx Todo List"/>
-                <TodoList/>
-            </Route>
-            <Route path="/practice">
-                <NavBar title="practice"/>
-             <Practice />
-             </Route>
-            <Route path="/mobxpractice">
-                <NavBar title="Mobx practice"/>
-                <MobxPractice />
-            </Route>
-            <Route path="/formComponents">
-                <NavBar title="Form components"/>
-                <FormComponents/>
-            </Route>
-            <Route path="/greetings">
-                  <Greetings/>
-            </Route>
-            <Route path="/desert">
-                  <Desert/>
-            </Route>
-            <Route path="/visitedCities">
-                  <CheckboxWithLabel/>
-            </Route>
-            <Route path="/state">
-                  <States/>
-            </Route>     
-            <Route path="/disableButton">
-                  <DisableButton/>
-            </Route>
-            <Route path="/countryDashboard">
-                  <NavBar title="Country DashBoard"/>
-                  <CountryDashboardApp />
-            </Route>
-             <Route path="/projects/countryDashboard/details/:id">
-             <NavBar title="Country DashBoard"/>
-                  <CountryDetails/>
-            </Route>
-            <Route path="/game">
-                <NavBar title="Emooji Game"/>
-            <Game/>
-            </Route>
-            <Route path="/home">
-            <Home/>
-            </Route>
+                    <Route exact path="/users" component={UsersPage}/>
+                   
+                    <Route exact path="/login" component={LoginPage}/>
+                    <Route path="/grid-game">
+                    <NavBar title="Memory Game"/>
+                    <GridMemoryGame/>
+                    </Route>
+                    <Route path="/mobxStoreTodoApp">
+                    <NavBar title="Todo List"/>
+                    <TodoApp/>
+                    </Route>
+                    <Route path="/counter-page">
+                    <NavBar title="Counter"/>
+                    <CounterApp/>
+                    </Route>
+                    <Route path="/carlist">
+                    <NavBar title="Car List"/>
+                     <CarsList/>
+                    </Route>
+                    <Route path="/eventlist">
+                    <NavBar title="Event List"/>
+                    <EventApp/>
+                    </Route>
+                    <Route path="/todolist">
+                        <NavBar title="Todo List"/>
+                      <Todo />
+                    </Route>
+                    <Route path="/mobxtodolist">
+                        <NavBar title="Mobx Todo List"/>
+                        <TodoList/>
+                    </Route>
+                    <Route path="/practice">
+                        <NavBar title="practice"/>
+                     <Practice />
+                     </Route>
+                    <Route path="/mobxpractice">
+                        <NavBar title="Mobx practice"/>
+                        <MobxPractice />
+                    </Route>
+                    <Route path="/formComponents">
+                        <NavBar title="Form components"/>
+                        <FormComponents/>
+                    </Route>
+                    <Route path="/greetings">
+                          <Greetings/>
+                    </Route>
+                    <Route path="/desert">
+                          <Desert/>
+                    </Route>
+                    <Route path="/visitedCities">
+                          <CheckboxWithLabel/>
+                    </Route>
+                    <Route path="/state">
+                          <States/>
+                    </Route>     
+                    <Route path="/disableButton">
+                          <DisableButton/>
+                    </Route>
+                    <Route path="/countryDashboard">
+                          <NavBar title="Country DashBoard"/>
+                          <CountryDashboardApp />
+                    </Route>
+                     <Route path="/projects/countryDashboard/details/:id">
+                     <NavBar title="Country DashBoard"/>
+                          <CountryDetails/>
+                    </Route>
+                    <Route path="/game">
+                        <NavBar title="Emooji Game"/>
+                    <Game/>
+                    </Route>
           </Switch>
     </Router>
-    </Provider>*/
+    </Provider>
         );
     };
 }

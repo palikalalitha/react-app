@@ -1,86 +1,51 @@
 import React from "react"
-import { observable } from "mobx"
-import { observer, inject } from "mobx-react"
-import { Redirect, withRouter } from "react-router-dom"
+import { observer } from "mobx-react"
+import { LoginContainer, Form, UserName, Password, Submit, Heading, ErrorMessage } from "./styledComponents.js"
 import CookieConsent from "react-cookie-consent";
 
-import { getAccessToken } from "../../utils/StorageUtils.js"
-import { USERNAME_REGEX, USERNAME_ERROR_MESSAGE, PASSWORD_ERROR_MESSAGE } from "../../constants/SignInPageConstants.js"
-
-import { LoginContainer, Form, UserName, Password, Submit, Heading, ErrorMessage } from "./styledComponents.js"
-import authStore from "../../stores/AuthStore/index"
-
-//let userToken;
-//@inject("authStore")
 @observer
 class SignInPage extends React.Component {
-    @observable username
-    @observable password
-    @observable errorMessage
-    @observable userToken
-    constructor() {
-        super()
-        this.init()
-    }
-    init() {
-        this.username = "";
-        this.password = "";
-        this.userToken = getAccessToken(),
-            this.errorMessage = ""
-    }
-    onChangeUsername = (event) => {
-        let userInput = event.target.value
-        if (USERNAME_REGEX.test(userInput)) {
-            this.username = userInput
-            this.errorMessage = ""
-        }
-        else {
-            this.errorMessage = USERNAME_ERROR_MESSAGE
-        }
-    }
-    onChangePassword = (event) => {
-        let userPassword = event.target.value
-        if (userPassword !== "") {
-            this.password = event.target.value
-            this.errorMessage = ""
-        }
-        else {
-            this.errorMessage = PASSWORD_ERROR_MESSAGE
-        }
-
-    }
-    onClickSignIn = async() => {
-        if (!this.username) {
-            this.errorMessage = USERNAME_ERROR_MESSAGE
-        }
-        else if (!this.password) {
-            this.errorMessage = PASSWORD_ERROR_MESSAGE
-        }
-        else {
-            //alert("signin")
-            await authStore.userSignIn();
-            this.props.history.replace("/ecommerce-store/products")
-
-        }
-    }
-    onSubmit(event) {
-        event.preventDefault()
-    }
     render() {
+        const {
+            apiStatus,
+            username,
+            onChangeUsername,
+            password,
+            onChangePassword,
+            onSubmitForm,
+            onClickSignIn,
+            errorMessage
+        } = this.props;
+
         return (
             <LoginContainer>
-            <CookieConsent>
-            This website uses cookies to enhance the user experience.   
-            </CookieConsent>
-            <Form onSubmit={this.onSubmit}>
-                <Heading>Sign in</Heading>
-                <UserName placeholder="UserName" type="text"  onChange={this.onChangeUsername} />
-               <Password type="password" placeholder="Password"  onChange={this.onChangePassword}/>
-               <Submit type="button" data-testid="sign-in-button" onClick={this.onClickSignIn}>Sign in</Submit>
-               <ErrorMessage>{this.errorMessage}</ErrorMessage>
-             </Form>
+                <CookieConsent>
+                This website uses cookies to enhance the user experience.   
+                </CookieConsent>
+                <Form onSubmit={onSubmitForm}>
+                    <Heading>
+                        Sign in
+                    </Heading>
+                    <UserName 
+                        placeholder="Username" 
+                        type="text"
+                        defaultValue={username} 
+                        onChange={onChangeUsername} />
+                    <Password 
+                        type="password" 
+                        placeholder="Password"  
+                        defaultValue={password}
+                        onChange={onChangePassword}/>
+                    <Submit disabled={apiStatus===100?true:false}
+                    text="Sign in"
+                        type="button"
+                        data-testid="sign-in-button"
+                        onClick={onClickSignIn}>Sign in
+                    </Submit>
+                    <ErrorMessage>{errorMessage}</ErrorMessage>
+                      </Form>
             </LoginContainer>)
     }
 
 }
-export default withRouter(SignInPage);
+export { SignInPage }

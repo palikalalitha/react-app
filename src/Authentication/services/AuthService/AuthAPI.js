@@ -8,14 +8,15 @@ import endPoints from "../endPoints.js"
 class AuthAPI {
     api
     constructor() {
+
         this.api = create({
             baseURL: URL
         });
     }
-    signInAPI() {
+    signInAPI(request) {
         return networkCallWithApisauce(
             this.api,
-            endPoints.signInEndPoint, {},
+            endPoints.signInEndPoint, request,
             apiMethods.get
 
         );
