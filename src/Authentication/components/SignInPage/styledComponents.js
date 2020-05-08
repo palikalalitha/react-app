@@ -11,7 +11,9 @@ const UserName = styled.input `${tw`border border-solid border-gray-400 mb-3 w-4
 const Password = styled.input `${tw`border border-solid border-gray-400 mb-3 w-48 h-10 pl-2  rounded`}`
 const Submit = styled.button `${tw`flex justify-center w-48 h-10 rounded bg-gray-900 focus:outline-none text-white`}`;
 
-const ErrorMessage = styled.span `${tw`text-red-700 mt-2 w-48 text-sm`}`
+const ErrorMessage = styled.span `${tw`text-red-700 mt-2 w-48 text-sm`}
+color:${props=>props.status==="Loading"?"green":""}
+;`
 export {
     LoginContainer,
     UserName,

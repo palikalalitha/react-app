@@ -6,6 +6,6 @@ describe("HelloMessage", () => {
     it("shoul render given message", () => {
         const { getByText, debug } = render(<HelloMessage message="world"/>);
         getByText(/world/i);
-        debug()
+        
     })
 })

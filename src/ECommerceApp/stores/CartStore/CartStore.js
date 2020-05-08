@@ -1,21 +1,20 @@
+import React from "react";
 import { observable, action, computed } from "mobx"
 import { inject } from "mobx-react"
 import CartItem from "../models/CartItem/CartItem.js"
-//@inject("productStore")
 class CartStore {
     @observable cartProductList
     @observable productStore
     constructor(productStore) {
+        this.productStore=productStore
         this.init()
-        this.productStore = productStore
     }
     init() {
-        //this.productStore = this.props.productStore
-        this.cartProductList = []
+   this.cartProductList = []
     }
     @action.bound
     onClickAddToCart(productId) {
-
+      //this.productStore=store.productStore
         if (this.cartProductList.some(each => each.productId === productId)) {
             let index = this.cartProductList.findIndex(cart => cart.productId === productId)
             this.cartProductList[index].incrementQuantity()
@@ -38,8 +37,8 @@ class CartStore {
     }
     @action.bound
     getProductDetailsById(id) {
-        const { productList } = this.productStore
-        return productList.filter(eachProduct => eachProduct.productId === id)
+         
+        return this.productStore.productList.filter(eachProduct => eachProduct.productId === id)
     }
     @computed
     get totalCartAmount() {
@@ -56,4 +55,4 @@ class CartStore {
         return this.cartProductList.length
     }
 }
-export default CartStore
+export default CartStore;

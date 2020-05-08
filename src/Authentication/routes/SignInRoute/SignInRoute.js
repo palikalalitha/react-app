@@ -43,8 +43,7 @@ class SignInRoute extends React.Component {
     onFailure = () => {
         const { getUserSignInAPIError: apiError } = this.props.authStore
         if (apiError !== undefined || apiError != null) {
-            //this.errorMessage = JSON.parse(apiError).originalError.message;
-            this.errorMessage = "Network Error"
+             this.errorMessage = "Network Error"
         }
     }
     onClickSignIn = () => {
@@ -68,9 +67,7 @@ class SignInRoute extends React.Component {
         }, this.onSuccess, this.onFailure)
 
     }
-    onSubmitForm(event) {
-        event.preventDefault()
-    }
+    
     render() {
         const { getUserSignInAPIStatus } = this.props.authStore
         return (
@@ -82,7 +79,6 @@ class SignInRoute extends React.Component {
             errorMessage={this.errorMessage}
             onChangePassword={this.onChangePassword}
             onChangeUsername={this.onChangeUsername}
-            onSubmit={this.onSubmitForm}
             onClickSignIn={this.onClickSignIn}/>)
     }
 

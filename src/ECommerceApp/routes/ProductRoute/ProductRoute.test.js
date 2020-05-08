@@ -21,7 +21,7 @@ import ProductStore from "../../stores/ProductStore";
 import AuthAPI from "../../../Authentication/services/AuthService/AuthAPI.js";
 import AuthStore from "../../../Authentication/stores/AuthStore";
 
-import { CartStore } from "../../stores/CartStore";
+import  CartStore  from "../../stores/CartStore";
 import { ProductRoute } from ".";
 
 const LocationDisplay = withRouter(({ location }) => (
@@ -69,16 +69,10 @@ describe("ProductRoute Tests", () => {
         fireEvent.click(signOutButton);
 
         await waitFor(() => {
-            // expect(
-            //     queryByRole("button", { name: "SignOut" })
-            // ).not.toBeInTheDocument();
-
             expect(getByTestId("location-display")).toHaveTextContent(
                 SIGN_IN_PATH)
         });
     });
-    it("should test filtering products based on size", () => {
-    
-    })
-
+   
 });
+

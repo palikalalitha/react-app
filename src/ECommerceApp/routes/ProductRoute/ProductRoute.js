@@ -38,6 +38,7 @@ class ProductRoute extends React.Component {
     }
     renderSuccessUI = observer(() => {
         const productsCount = this.props.productStore.totalNoOfProductsDisplayed
+        console.log(this.getProducts())
         return <div>
         <ProductList onClickAddToCart={this.addCart} 
                      onSelectSortBy={this.onSelectSortBy} productsCount={productsCount} 

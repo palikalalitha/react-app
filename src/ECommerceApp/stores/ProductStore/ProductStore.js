@@ -1,18 +1,16 @@
 import { observable, action, computed } from "mobx"
-
+import React from 'react';
 import { bindPromiseWithOnSuccess } from "@ib/mobx-promise"
 import { API_INITIAL } from "@ib/api-constants"
 import Product from "../models/Product/Product.js"
 
 class ProductStore {
-    @observable productList
-    @observable getProductListAPIStatus
-    @observable getProductListAPIError
-    @observable sizeFilter
-    @observable sortBy
-
+    @observable productList;
+    @observable getProductListAPIStatus;
+    @observable getProductListAPIError;
+    @observable sizeFilter;
+    @observable sortBy;
     productsAPIService
-
     constructor(productService) {
         this.productsAPIService = productService
         this.init()
@@ -22,7 +20,7 @@ class ProductStore {
         this.getProductListAPIError = null
         this.productList = []
         this.sizeFilter = [],
-            this.sortBy = "select"
+        this.sortBy = "select"
     }
 
     @action.bound
@@ -74,8 +72,8 @@ class ProductStore {
             products = [...this.productList]
         }
         else {
-            products = this.productList.filter(eachProduct => (eachProduct.availableSizes.filter(eachAvilableSize =>
-                (this.sizeFilter.includes(eachAvilableSize)))).length > 0)
+            products = this.productList.filter(eachProduct  => 
+                (eachProduct.availableSizes.filter(eachAvilableSize => (this.sizeFilter.includes(eachAvilableSize)))).length > 0)
         }
         if (this.sortBy === "DESCENDING") {
             products.sort((a, b) => b.price - a.price)

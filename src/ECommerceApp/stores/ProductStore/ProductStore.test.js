@@ -74,7 +74,11 @@ describe("Product store test", () => {
 
     });
     it("should test sort function", () => {
-        productStore.sortBy = "ASCENDING";
+        const fixtureProducts=getProductsResponse
+        const testProducts=[fixtureProducts[0],fixtureProducts[1],fixtureProducts[2]]
+        const ouputProducts=[fixtureProducts[1],fixtureProducts[0],fixtureProducts[2]]
+        productStore.onChangeSortBy("ASCENDING");
+        
         expect(productStore.sortBy).toStrictEqual("ASCENDING");
 
     })

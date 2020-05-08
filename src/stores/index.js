@@ -10,7 +10,7 @@ import ProductService from "../ECommerceApp/services/ProductService/ProductServi
 import AuthStore from "../Authentication/stores/AuthStore"
 import AuthAPI from "../Authentication/services/AuthService/AuthAPI.js"
 
-import { CartStore } from "../ECommerceApp/stores/CartStore"
+import  CartStore  from "../ECommerceApp/stores/CartStore"
 
 const userService = new UserService()
 const userStore = new UserStore(userService)

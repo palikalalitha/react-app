@@ -1,5 +1,5 @@
 import React from "react";
-
+//import { shallow, mount } from 'enzyme';
 import { render, fireEvent, waitFor, waitForElement } from "@testing-library/react";
 import { Router, Route, withRouter } from "react-router-dom";
 import { Provider } from "mobx-react";
@@ -81,6 +81,13 @@ describe("SignInRoute Tests", () => {
         //waitFor(() => getByLabelText(""));
         getByText("Loading")
     });
+    // it('calls onSubmit prop function when form is submitted', () => {
+    //     const onSubmitFn = jest.fn();
+    //     const wrapper = mount(<SignInRoute authStore={authStore}/>);
+    //     const form = wrapper.find('form');
+    //     form.simulate('submit');
+    //     expect(onSubmitFn).toHaveBeenCalledTimes(1);
+    //   });
 
     it("should render signInRoute loading state", async() => {
         const { getByLabelText, getByPlaceholderText, getByRole, getByText } = render(
@@ -172,7 +179,7 @@ describe("SignInRoute Tests", () => {
         <SignInRoute authStore={authStore} />
       </Router>
         );
-
+        console.log("hisroty",history)
         const username = "test-user";
         const password = "test-password";
 

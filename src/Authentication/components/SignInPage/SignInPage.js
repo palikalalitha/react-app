@@ -12,7 +12,7 @@ class SignInPage extends React.Component {
             onChangeUsername,
             password,
             onChangePassword,
-            onSubmitForm,
+           
             onClickSignIn,
             errorMessage
         } = this.props;
@@ -22,7 +22,7 @@ class SignInPage extends React.Component {
                 <CookieConsent>
                 This website uses cookies to enhance the user experience.   
                 </CookieConsent>
-                <Form onSubmit={onSubmitForm}>
+                <Form >
                     <Heading>
                         Sign in
                     </Heading>
@@ -36,13 +36,12 @@ class SignInPage extends React.Component {
                         placeholder="Password"  
                         defaultValue={password}
                         onChange={onChangePassword}/>
-                    <Submit disabled={apiStatus===100?true:false}
+                    <Submit  disabled={apiStatus===100?true:false}
                     text="Sign in"
-                        type="button"
                         data-testid="sign-in-button"
                         onClick={onClickSignIn}>Sign in
                     </Submit>
-                    <ErrorMessage>{errorMessage}</ErrorMessage>
+                    <ErrorMessage status={errorMessage}>{errorMessage}</ErrorMessage>
                       </Form>
             </LoginContainer>)
     }
