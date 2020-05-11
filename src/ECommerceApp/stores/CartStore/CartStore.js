@@ -16,7 +16,8 @@ class CartStore {
     onClickAddToCart(productId) {
       //this.productStore=store.productStore
         if (this.cartProductList.some(each => each.productId === productId)) {
-            let index = this.cartProductList.findIndex(cart => cart.productId === productId)
+            let index = this.cartProductList.findIndex(cart => 
+                cart.productId === productId)
             this.cartProductList[index].incrementQuantity()
         }
         else {
@@ -25,7 +26,8 @@ class CartStore {
     }
     @action.bound
     onRemoveCartItem(id) {
-        let cartIndex = this.cartProductList.findIndex(cart => cart.cartItemId === id)
+        let cartIndex = this.cartProductList.findIndex(cart =>
+             cart.cartItemId === id)
         this.cartProductList.remove(this.cartProductList[cartIndex])
     }
     @action.bound
@@ -37,8 +39,8 @@ class CartStore {
     }
     @action.bound
     getProductDetailsById(id) {
-         
-        return this.productStore.productList.filter(eachProduct => eachProduct.productId === id)
+        return this.productStore.productList.filter(eachProduct => 
+            eachProduct.id === id)
     }
     @computed
     get totalCartAmount() {
@@ -48,7 +50,7 @@ class CartStore {
             let price = cartDetails[0].price
             cartAmount += eachCart.quantity * price
         })
-        return (cartAmount.toFixed(1))
+        return (cartAmount.toFixed(2))
     }
     @computed
     get noOfProductsInCart() {

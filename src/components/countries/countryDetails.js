@@ -47,7 +47,6 @@ class CountryDetails extends React.Component {
         const { changeTheme } = this.props
         const { state } = this.props.history.location
         const allCountries = this.state.countriesList
-        console.log(this.props.selectedTheme)
         return (
             <div className={selectTheme?"dark countryDetailsCard":'light countryDetailsCard'}>
                 <Header changeTheme={this.onChangeTheme} selectTheme={selectTheme} />
@@ -168,7 +167,7 @@ const languages = {
 // }
 // componentDidMount() {
 //     let { id } = this.props.match.params
-//     console.log(id)
+//  
 //     let country = []
 //     fetch("https://restcountries.eu/rest/v2/all ")
 //         .then(res => res.json())

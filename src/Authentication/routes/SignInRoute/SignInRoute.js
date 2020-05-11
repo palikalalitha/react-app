@@ -1,5 +1,5 @@
 import React from "react"
-import { observable } from "mobx"
+import { observable,autorun } from "mobx"
 import { observer, inject } from "mobx-react"
 import { withRouter } from "react-router-dom"
 
@@ -18,8 +18,7 @@ class SignInRoute extends React.Component {
     @observable username
     @observable password
     @observable errorMessage
-
-    constructor() {
+   constructor() {
         super()
         this.init()
     }
@@ -30,11 +29,9 @@ class SignInRoute extends React.Component {
     }
     onChangeUsername = (event) => {
         this.username = event.target.value
-
-
-    }
+           }
     onChangePassword = (event) => {
-        this.password = event.target.value
+         this.password = event.target.value
     }
 
     onSuccess = () => {
@@ -71,16 +68,17 @@ class SignInRoute extends React.Component {
     render() {
         const { getUserSignInAPIStatus } = this.props.authStore
         return (
-            <SignInPage
+              <SignInPage
             apiStatus={getUserSignInAPIStatus}
-       
             username={this.username}
             password={this.password}
             errorMessage={this.errorMessage}
             onChangePassword={this.onChangePassword}
             onChangeUsername={this.onChangeUsername}
-            onClickSignIn={this.onClickSignIn}/>)
+            onClickSignIn={this.onClickSignIn}/>
+           )
     }
 
 }
 export default withRouter(SignInRoute);
+

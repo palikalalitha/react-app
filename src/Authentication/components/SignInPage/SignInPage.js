@@ -22,7 +22,7 @@ class SignInPage extends React.Component {
                 <CookieConsent>
                 This website uses cookies to enhance the user experience.   
                 </CookieConsent>
-                <Form >
+                <Form> 
                     <Heading>
                         Sign in
                     </Heading>

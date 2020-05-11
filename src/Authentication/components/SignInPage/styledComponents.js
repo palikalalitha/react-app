@@ -3,7 +3,7 @@ import tw from "tailwind.macro"
 
 const LoginContainer = styled.div `${tw`flex justify-center h-screen bg-gray-200 items-center`}`;
 
-const Form = styled.form `${tw`flex flex-col bg-white p-8 shadow-custom`}`;
+const Form = styled.div `${tw`flex flex-col bg-white p-8 shadow-custom`}`;
 const Heading = styled.h2 `${tw`font-bold mb-4`}`;
 
 const UserName = styled.input `${tw`border border-solid border-gray-400 mb-3 w-48 h-10 pl-2  rounded`}`

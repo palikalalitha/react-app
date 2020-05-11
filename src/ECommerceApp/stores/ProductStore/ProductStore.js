@@ -33,8 +33,8 @@ class ProductStore {
 
     @action.bound
     setProductListResponse(response) {
-
-        this.productList = response.map(eachProduct => { return new Product(eachProduct) })
+        this.productList = response.map(eachProduct => { 
+            return new Product(eachProduct) })
 
     }
     @action.bound

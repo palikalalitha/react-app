@@ -20,18 +20,18 @@ class CartItem extends React.Component {
     render() {
         const { productId, getProductDetailsById, quantity } = this.props
         const productDetails = getProductDetailsById(productId)
-        const { imageURL, title, printStyle, price, currencyFormat } = productDetails[0]
+        const { image, title, style, price, currencyFormat } = productDetails[0]
         return (
             <div>
              <hr/>
             <CartItemContainer>
                <RemoveItemButton  data-testid='remove-cart-item' onClick={this.onRemoveCartItem}>X</RemoveItemButton>
-               <ProductImage src={imageURL}/>
+               <ProductImage src={image}/>
                 <ProductDescriptionContainer>
                    <ProductTitle>
                    {title}
                    </ProductTitle>
-                   <ProductStyle>{printStyle}
+                   <ProductStyle>{style}
                    </ProductStyle>
                    <ProductQuantity>Quantity :{quantity}</ProductQuantity>
                  </ProductDescriptionContainer>

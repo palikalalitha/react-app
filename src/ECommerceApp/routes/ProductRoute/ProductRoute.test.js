@@ -54,7 +54,8 @@ describe("ProductRoute Tests", () => {
             queryByRole,
             getByTestId,
         } = render(
-            <Provider productStore={productStore} authStore={authStore} cartStore={cartStore}>
+            <Provider productStore={productStore} authStore={authStore} 
+            cartStore={cartStore}>
                 <Router history={history}>
                   <Route path={SIGN_IN_PATH}>
                     <LocationDisplay />
@@ -73,6 +74,16 @@ describe("ProductRoute Tests", () => {
                 SIGN_IN_PATH)
         });
     });
-   
+   it("should test props ",()=>
+   {
+    
+    // const { getByText, getByPlaceholderText, getByRole, debug } = render(
+    //     <Router history={createMemoryHistory()}>
+    // <ProductRoute authStore={authStore} productStore={productStore}  cartStore={cartStore} />
+    // </Router>
+    // );
+
+
+   })
 });
 

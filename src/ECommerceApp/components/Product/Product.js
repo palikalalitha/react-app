@@ -24,7 +24,7 @@ class Product extends React.Component {
     addToCart = () => {
         const { onClickAddToCart } = this.props
         const { productItem } = this.props;
-        onClickAddToCart(productItem.productId)
+        onClickAddToCart(productItem.id)
         toast.info("Add to cart", {
             position: toast.POSITION.BOTTOM_CENTER,
             // className: "text-center"
@@ -35,19 +35,19 @@ class Product extends React.Component {
         const { productItem } = this.props;
         const {
             currencyFormat,
-            installmentsCount,
+            installments,
             isFreeShipping,
             price,
             title,
-            imageURL,
+            image,
             productId,
         } = productItem
-        const installementAmount = (price / installmentsCount).toFixed(2)
+        const installment = (price / installments).toFixed(2)
         return (
             <LazyLoad height={20}> 
             <Products  >
             {isFreeShipping?<FreeShippingView>Free shipping</FreeShippingView>:""}
-            <ProductImageElement src={imageURL} alt={title}/>
+            <ProductImageElement src={image} alt={title}/>
                     <ProductTitle>{title}</ProductTitle>
                     <ProductPriceView>
                         <ProductCurrency>{currencyFormat}</ProductCurrency>
@@ -55,7 +55,8 @@ class Product extends React.Component {
                         </ProductPrice>
                     </ProductPriceView>
                     <InstallmentsView>
-                  {installmentsCount!=0? `or ${installmentsCount} x ${currencyFormat} ${installementAmount}`:""}</InstallmentsView>
+                  {installments!=0? `or ${installments} x 
+                  ${currencyFormat} ${installment}`:""}</InstallmentsView>
                     <AddCartButton onClick={this.addToCart}>
                     Add to cart 
                     </AddCartButton>

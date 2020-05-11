@@ -15,6 +15,7 @@ from "../../constants/RouteConstants";
 
 import {
     PRODUCT_PATH
+    
 }
 from "../../../ECommerceApp/constants/RouteConstants";
 
@@ -77,17 +78,8 @@ describe("SignInRoute Tests", () => {
         fireEvent.change(usernameField, { target: { value: username } });
         fireEvent.change(passwordField, { target: { value: password } });
         fireEvent.click(signInButton);
-
-        //waitFor(() => getByLabelText(""));
-        getByText("Loading")
+                getByText("Loading")
     });
-    // it('calls onSubmit prop function when form is submitted', () => {
-    //     const onSubmitFn = jest.fn();
-    //     const wrapper = mount(<SignInRoute authStore={authStore}/>);
-    //     const form = wrapper.find('form');
-    //     form.simulate('submit');
-    //     expect(onSubmitFn).toHaveBeenCalledTimes(1);
-    //   });
 
     it("should render signInRoute loading state", async() => {
         const { getByLabelText, getByPlaceholderText, getByRole, getByText } = render(
@@ -157,12 +149,7 @@ describe("SignInRoute Tests", () => {
         fireEvent.change(passwordField, { target: { value: password } });
         fireEvent.click(signInButton);
 
-        // const navigation = await waitForElement(() => getByTestId("location-display"));
-        // expect(navigation).toHaveTextContent(PRODUCT_PATH)
-        // expect(
-        //     queryByRole("button", { name: "Sign in" })
-        // ).not.toBeInTheDocument();
-        await waitFor(() => {
+         await waitFor(() => {
             expect(
                 queryByRole("button", { name: "Sign in" })
             ).not.toBeInTheDocument();
@@ -179,7 +166,6 @@ describe("SignInRoute Tests", () => {
         <SignInRoute authStore={authStore} />
       </Router>
         );
-        console.log("hisroty",history)
         const username = "test-user";
         const password = "test-password";
 
@@ -197,10 +183,6 @@ describe("SignInRoute Tests", () => {
         fireEvent.change(usernameField, { target: { value: username } });
         fireEvent.change(passwordField, { target: { value: password } });
         fireEvent.click(signInButton);
-
-
-        // const error = await waitForElement(() => getByText(/Network Error/i));
-        // expect(error).toHaveTextContent("Network Error")
 
         await waitFor(() => {
             getByText(/Network Error/i);
