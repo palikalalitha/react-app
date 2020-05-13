@@ -1,5 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react"
+ import { observable } from "mobx";
+
 import { LoginContainer, Form, UserName, Password, Submit, Heading, ErrorMessage } from "./styledComponents.js"
 import CookieConsent from "react-cookie-consent";
 
@@ -43,8 +45,16 @@ class SignInPage extends React.Component {
                     </Submit>
                     <ErrorMessage status={errorMessage}>{errorMessage}</ErrorMessage>
                       </Form>
-            </LoginContainer>)
+                     
+            </LoginContainer>
+           )
     }
 
 }
+// import React, { Component } from "react";
+// import { render } from "react-dom";
+// import { observable } from "mobx";
+// import { observer } from "mobx-react";
+
+
 export { SignInPage }

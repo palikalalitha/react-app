@@ -1,0 +1,10 @@
+
+spread operator in array
+try catch blocks
+state varibles rendering
+Promise and then 
+
+In Css
+display flex concepts
+position relative
+media queries
