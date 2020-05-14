@@ -32,7 +32,7 @@ import authenticationRoutes from "./Authentication/routes"
 import productRoutes from "./ECommerceApp/routes"
 import HiddenMessage from "./testingPractice1/test.js"
 import OnChange from "./testingPractice2/OnChange.js"
-
+import {action,observable,computed,autorun} from "mobx"
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
 import './components/countries/countries.css'
@@ -40,8 +40,45 @@ import './components/forms/forms.css'
 import './components/CarsList/index.css'
 import "./App.css";
 
-
+class AppStore {
+    @observable message = {
+      title: "Hello",
+    };
+  
+    @action.bound
+    onChangeTitle(title) {
+      this.message.title = title;
+    }
+  }
+  const appStore = new AppStore();
+  class Person {
+    @observable firstName = "Ramu";
+    @observable lastName = "Ratnam";
+  
+    @computed get fullName() {
+        console.log("computed value")
+      return this.firstName + " " + this.lastName;
+    }
+  
+    @action.bound
+    changeFirstNameAndLastName=()=> {
+      this.firstName = "Mark";
+      this.lastName = "Wayne";
+    }
+  }
+  
+  const newPerson = new Person();
+  autorun(() => {
+    console.log("Autorun called");
+    console.log(newPerson.fullName);
+  });
+   
 class App extends React.Component {
+  @observable ecommerceAppTheme="dark"
+  onChangeEcommerceAppTheme=()=>
+  {
+    this.ecommerceAppTheme=!this.ecommerceAppTheme
+  }
     render() {
         return (
             <Provider  {...stores}>
@@ -55,9 +92,12 @@ class App extends React.Component {
                     <Route exact path="/OnChange" component={OnChange}/>
                     
                     <Route exact path="/" component={Home}/>
-                    <Route path="/grid-game" component={GridMemoryGame}/>
+                    <Route path=" /grid-game" component={GridMemoryGame}/>
                     <Route path="/header" component={Header}/>
-                    
+                    <Route path="/mobxpractice">
+                        <NavBar title="Mobx practice"/>
+                        <MobxPractice appStore={appStore} person={newPerson}/>
+                    </Route>
             
                     <Route exact path="/users" component={UsersPage}/>
                    
@@ -94,10 +134,7 @@ class App extends React.Component {
                         <NavBar title="practice"/>
                      <Practice />
                      </Route>
-                    <Route path="/mobxpractice">
-                        <NavBar title="Mobx practice"/>
-                        <MobxPractice />
-                    </Route>
+                  
                     <Route path="/formComponents">
                         <NavBar title="Form components"/>
                         <FormComponents/>

@@ -4,9 +4,23 @@ import { observer } from "mobx-react"
 
 import { LoginContainer, Form, UserName, Password, Submit, Heading, ErrorMessage } from "./styledComponents.js"
 import CookieConsent from "react-cookie-consent";
-
+// function Display(props)
+// {
+//     return<div>
+//         {props.children}
+//     </div>
+// }
 @observer
 class SignInPage extends React.Component {
+    userNameRef=React.createRef();
+    passwordRef=React.createRef();
+componentDidMount()
+{
+    //this.props.siginPageRef.current.userNameRef.current.focus()
+     
+    //this.userNameRef.current.focus();
+   // tis.passwordRef.current.focus();
+}
     render() {
         const {
             apiStatus,
@@ -14,7 +28,6 @@ class SignInPage extends React.Component {
             onChangeUsername,
             password,
             onChangePassword,
-           
             onClickSignIn,
             errorMessage
         } = this.props;
@@ -28,33 +41,26 @@ class SignInPage extends React.Component {
                     <Heading>
                         Sign in
                     </Heading>
-                    <UserName 
+                    <UserName ref={this.userNameRef}
                         placeholder="Username" 
                         type="text"
                         defaultValue={username} 
                         onChange={onChangeUsername} />
-                    <Password 
+                    <Password  ref={this.passwordRef}
                         type="password" 
                         placeholder="Password"  
                         defaultValue={password}
                         onChange={onChangePassword}/>
                     <Submit  disabled={apiStatus===100?true:false}
-                    text="Sign in"
+                        text="Sign in"
                         data-testid="sign-in-button"
                         onClick={onClickSignIn}>Sign in
                     </Submit>
                     <ErrorMessage status={errorMessage}>{errorMessage}</ErrorMessage>
                       </Form>
-                     
-            </LoginContainer>
+             </LoginContainer>
            )
     }
 
 }
-// import React, { Component } from "react";
-// import { render } from "react-dom";
-// import { observable } from "mobx";
-// import { observer } from "mobx-react";
-
-
 export { SignInPage }

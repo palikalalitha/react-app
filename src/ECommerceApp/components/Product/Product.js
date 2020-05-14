@@ -45,7 +45,7 @@ class Product extends React.Component {
         const installment = (price / installments).toFixed(2)
         return (
             <LazyLoad height={20}> 
-            <Products  >
+            <Products >
             {isFreeShipping?<FreeShippingView>Free shipping</FreeShippingView>:""}
             <ProductImageElement src={image} alt={title}/>
                     <ProductTitle>{title}</ProductTitle>

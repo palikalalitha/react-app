@@ -18,9 +18,17 @@ class SignInRoute extends React.Component {
     @observable username
     @observable password
     @observable errorMessage
+    siginPageRef=React.createRef();
    constructor() {
         super()
         this.init()
+        
+    }
+    componentDidMount()
+    {
+        this.siginPageRef.current.userNameRef.current.focus()
+        console.log(this.siginPageRef.current)
+         
     }
     init() {
         this.username = "";
@@ -41,15 +49,19 @@ class SignInRoute extends React.Component {
         const { getUserSignInAPIError: apiError } = this.props.authStore
         if (apiError !== undefined || apiError != null) {
              this.errorMessage = "Network Error"
+             this.siginPageRef.current.passwordRef.current.focus()
         }
     }
     onClickSignIn = () => {
         if (this.username === "" || this.username === undefined) {
             this.errorMessage = USERNAME_ERROR_MESSAGE
-
+            this.siginPageRef.current.userNameRef.current.focus()
+       
         }
         else if (this.password === "" || this.password === undefined) {
             this.errorMessage = PASSWORD_ERROR_MESSAGE
+            this.siginPageRef.current.passwordRef.current.focus()
+       
         }
         else {
             this.errorMessage = "Loading"
@@ -75,7 +87,8 @@ class SignInRoute extends React.Component {
             errorMessage={this.errorMessage}
             onChangePassword={this.onChangePassword}
             onChangeUsername={this.onChangeUsername}
-            onClickSignIn={this.onClickSignIn}/>
+            onClickSignIn={this.onClickSignIn}
+            ref={this.siginPageRef}/>
            )
     }
 
