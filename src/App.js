@@ -22,6 +22,7 @@ import CounterApp from "./components/CounterPage"
 import GridMemoryGame from "./components/Game/GridMemoryGame/index.js"
 import TodoApp from "./components/TodoMobx/TodoApp/index.js"
 import MobxPractice from "./components/MobxPractice/index.js"
+import Bits from "./components/BitsRevison2/index.js"
 import EventApp from "./components/Event/EventApp/index.js"
 import LoginPage from "./components/LoginPage/index.js"
 import UsersPage from "./components/UsersPage/"
@@ -40,39 +41,50 @@ import './components/forms/forms.css'
 import './components/CarsList/index.css'
 import "./App.css";
 
-class AppStore {
-    @observable message = {
-      title: "Hello",
-    };
+// class AppStore {
+//     @observable message = {
+//       title: "Hello",
+//     };
   
-    @action.bound
-    onChangeTitle(title) {
-      this.message.title = title;
-    }
+//     @action.bound
+//     onChangeTitle(title) {
+//       this.message.title = title;
+//     }
+//   }
+//   const appStore = new AppStore();
+//   class Person {
+//     @observable firstName = "Ramu";
+//     @observable lastName = "Ratnam";
+  
+//     @computed get fullName() {
+//         console.log("computed value")
+//       return this.firstName + " " + this.lastName;
+//     }
+  
+//     @action.bound
+//     changeFirstNameAndLastName=()=> {
+//       this.firstName = "Mark";
+//       this.lastName = "Wayne";
+//     }
+//   }
+  
+//   const newPerson = new Person();
+//   autorun(() => {
+//     console.log("Autorun called");
+//     console.log(newPerson.fullName);
+//   });
+class AuthStore {
+  @observable isSignedIn = false;
+
+  onChange() {
+    console.log("onChange isSignedIn");
+    this.isSignedIn = !this.isSignedIn;
   }
-  const appStore = new AppStore();
-  class Person {
-    @observable firstName = "Ramu";
-    @observable lastName = "Ratnam";
-  
-    @computed get fullName() {
-        console.log("computed value")
-      return this.firstName + " " + this.lastName;
-    }
-  
-    @action.bound
-    changeFirstNameAndLastName=()=> {
-      this.firstName = "Mark";
-      this.lastName = "Wayne";
-    }
-  }
-  
-  const newPerson = new Person();
-  autorun(() => {
-    console.log("Autorun called");
-    console.log(newPerson.fullName);
-  });
-   
+}
+
+const authStore = new AuthStore();
+
+
 class App extends React.Component {
   @observable ecommerceAppTheme="dark"
   onChangeEcommerceAppTheme=()=>
@@ -96,11 +108,15 @@ class App extends React.Component {
                     <Route path="/header" component={Header}/>
                     <Route path="/mobxpractice">
                         <NavBar title="Mobx practice"/>
-                        <MobxPractice appStore={appStore} person={newPerson}/>
+                        <MobxPractice />
                     </Route>
             
                     <Route exact path="/users" component={UsersPage}/>
-                   
+
+                    <Route path="/bits">
+                    <NavBar title="Bits"/>
+                    <Bits authStore={authStore}/>
+                    </Route>
                     <Route exact path="/login" component={LoginPage}/>
                     <Route path="/grid-game">
                     <NavBar title="Memory Game"/>

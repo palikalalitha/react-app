@@ -8,3 +8,187 @@ In Css
 display flex concepts
 position relative
 media queries
+
+
+
+
+
+HTML
+
+ 
+
+-->Tables
+
+-->Links
+
+-->Forms
+
+-->Block and Inline Elements
+
+-->Html Web Storage
+
+-->Html Iframes
+
+-->Html CSS
+
+-->(revise)All Html Tags
+
+-->Html Emojis
+
+--> Html Symbols
+
+ 
+
+CSS
+
+ 
+
+-->Selectors
+    -->Csss Combinators
+
+    -->Psuedo Classes
+
+    -->csspsuedo-element
+
+-->Box Model
+
+-->css Outline
+
+--> css Tables
+
+--> Max-width
+
+-->Display
+
+-->Css Position
+
+-->Css Overflow
+
+-->css Inline-block
+
+
+-->css image sprites
+
+-->css forms
+
+-->css specificity
+
+-->css Counters
+
+-->css attribute selectors
+
+-->css Gradients
+
+-->css Shadows
+
+-->css text-effects
+
+-->css Transformations
+
+-->css Transistions
+
+-->css Animations
+
+-->css tooltips,styleeImages
+
+-->css object-fit
+
+-->css buttons
+
+-->pagination
+
+-->box-sizing
+
+-->flexbox
+
+-->css media queries
+
+-->responsive web design media queries
+
+-->css animatables
+
+--> css units
+
+ 
+
+Bootstrap
+
+-->toal learning in w3 schools
+
+javascript
+
+--> total revision
+
+-->Js Cookies
+
+-->Js FUNTIONS,OBJECTS,DOM
+
+-->Js STRICT mode
+
+ 
+
+React
+
+-->(revision)React
+
+-->(more concentrate on life cycle methods)
+
+Mobx
+
+-->(revision)total mobx
+
+-->(more concentrate on async await and where ,when batching occurs)
+
+ 
+
+TypeScript
+
+-->types for props
+
+-->comman mistakes and debugging
+
+ 
+
+React Router
+
+-->react router
+
+-->rest concepts
+
+ 
+
+ 
+
+-->works pending(all apps in react app convert the codes into ts and tsx and push it in git hub account)
+
+-->(write test cases for product page product reoute)
+
+-->write route constants for e commerce app
+
+Sent from Mail for Windows 10
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
