@@ -34,6 +34,7 @@ import productRoutes from "./ECommerceApp/routes"
 import HiddenMessage from "./testingPractice1/test.js"
 import OnChange from "./testingPractice2/OnChange.js"
 import {action,observable,computed,autorun} from "mobx"
+import {PracticeAdvancedConceptsRoute} from "./common/routes/PracticeAdvancedConceptsRoute.js"
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
 import './components/countries/countries.css'
@@ -102,6 +103,8 @@ class App extends React.Component {
                     <HiddenMessage children="hii gud mrng"/>
                     </Route>
                     <Route exact path="/OnChange" component={OnChange}/>
+                    <Route exact path="/practice-advanced-concepts" 
+                    component={PracticeAdvancedConceptsRoute}/>
                     
                     <Route exact path="/" component={Home}/>
                     <Route path=" /grid-game" component={GridMemoryGame}/>
@@ -115,7 +118,8 @@ class App extends React.Component {
 
                     <Route path="/bits">
                     <NavBar title="Bits"/>
-                    <Bits authStore={authStore}/>
+                    <Bits authStore={authStore
+                    }/>
                     </Route>
                     <Route exact path="/login" component={LoginPage}/>
                     <Route path="/grid-game">

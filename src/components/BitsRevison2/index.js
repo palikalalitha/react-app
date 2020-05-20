@@ -5,43 +5,43 @@ import { observable,values } from "mobx";
 
 const persons = observable(new Map());
 
-const data = [
-  {
-    id: 1,
-    name: "Sri Potti Sriramulu",
-    city: "Nellore",
-    state: "Andhra Pradesh",
-  },
-  {
-    id: 2,
-    name: "Pingali Venkayya",
-    city: "Vijayawada",
-    state: "Andhra Pradesh",
-  },
-  {
-    id: 3,
-    name: "Hanuma Vihari",
-    city: "Kakinada",
-    state: "Andhra Pradesh",
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     name: "Sri Potti Sriramulu",
+//     city: "Nellore",
+//     state: "Andhra Pradesh",
+//   },
+//   {
+//     id: 2,
+//     name: "Pingali Venkayya",
+//     city: "Vijayawada",
+//     state: "Andhra Pradesh",
+//   },
+//   {
+//     id: 3,
+//     name: "Hanuma Vihari",
+//     city: "Kakinada",
+//     state: "Andhra Pradesh",
+//   },
+// ];
 
-data.forEach((person) => {
-  persons.set(person.id, person);
-});
+// data.forEach((person) => {
+//   persons.set(person.id, person);
+// });
 
-const cities1 = [];
-for (const [key, value] of persons.entries()) {
-  cities1.push(value.city);
-}
+// const cities1 = [];
+// for (const [key, value] of persons.entries()) {
+//   cities1.push(value.city);
+// }
 
-const cities2 = Array.from(persons.values()).map((person) => person.city);
+// const cities2 = Array.from(persons.values()).map((person) => person.city);
 
-const cities3 = values(persons).map((person) => person.city);
-console.log(cities1,cities2,cities3,values(persons),Array.from(persons.values()))
+// const cities3 = values(persons).map((person) => person.city);
+// console.log(cities1,cities2,cities3,values(persons),Array.from(persons.values()))
 
 //const cities4 = Array.from(persons.values()).map((person) => person.city);
-console.log(Array.from(persons.values()))
+//console.log(Array.from(persons.values()))
 
 class ListItem extends React.Component {
   shouldComponentUpdate(nextProps) {
