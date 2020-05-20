@@ -16,9 +16,7 @@ export const ProtectedRoute = (props) => {
     if (isLoggedIn()) {
         return <Route  component={Component} exact path={path} />
     }
-    else {
-        return <Redirect to={SIGN_IN_PATH}/>
-    }
+    return <Redirect to={SIGN_IN_PATH}/>
 }
 
 

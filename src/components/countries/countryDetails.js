@@ -43,11 +43,10 @@ class CountryDetails extends React.Component {
         this.props.history.goBack()
     }
     render() {
-        console.log("details ",this.props.history)
+        console.log(this.props.history.location)
         const selectTheme=this.getCurrenTheme()
         const { changeTheme } = this.props
         const { state } = this.props.history.location
-        console.log(state)
         const allCountries = this.state.countriesList
         return (
             <div className={selectTheme?"dark countryDetailsCard":'light countryDetailsCard'}>

@@ -1,6 +1,7 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "mobx-react"
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Provider, observer } from "mobx-react"
+import {action,observable,computed,autorun} from "mobx"
 
 import stores from "./stores"
 import Home from "./components/home.js"
@@ -33,7 +34,6 @@ import authenticationRoutes from "./Authentication/routes"
 import productRoutes from "./ECommerceApp/routes"
 import HiddenMessage from "./testingPractice1/test.js"
 import OnChange from "./testingPractice2/OnChange.js"
-import {action,observable,computed,autorun} from "mobx"
 import {PracticeAdvancedConceptsRoute} from "./common/routes/PracticeAdvancedConceptsRoute.js"
 //import themeStore from "./stores/ThemeStore"
 import './components/todolist/index.css'
@@ -42,50 +42,7 @@ import './components/forms/forms.css'
 import './components/CarsList/index.css'
 import "./App.css";
 
-// class AppStore {
-//     @observable message = {
-//       title: "Hello",
-//     };
-  
-//     @action.bound
-//     onChangeTitle(title) {
-//       this.message.title = title;
-//     }
-//   }
-//   const appStore = new AppStore();
-//   class Person {
-//     @observable firstName = "Ramu";
-//     @observable lastName = "Ratnam";
-  
-//     @computed get fullName() {
-//         console.log("computed value")
-//       return this.firstName + " " + this.lastName;
-//     }
-  
-//     @action.bound
-//     changeFirstNameAndLastName=()=> {
-//       this.firstName = "Mark";
-//       this.lastName = "Wayne";
-//     }
-//   }
-  
-//   const newPerson = new Person();
-//   autorun(() => {
-//     console.log("Autorun called");
-//     console.log(newPerson.fullName);
-//   });
-// class AuthStore {
-//   @observable isSignedIn = false;
-
-//   onChange() {
-//     console.log("onChange isSignedIn");
-//     this.isSignedIn = !this.isSignedIn;
-//   }
-// }
-
-//const authStore = new AuthStore();
-
-
+@observer
 class App extends React.Component {
   @observable ecommerceAppTheme="dark"
   onChangeEcommerceAppTheme=()=>
