@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 class CountryCard extends React.Component {
     navigateToCountryDetailsPage = () => {
         let { history, countryDetails } = this.props
+        console.log(countryDetails)
         history.push(`/projects/countryDashboard/details/${countryDetails.alpha3Code}`, countryDetails)
     }
     render() {

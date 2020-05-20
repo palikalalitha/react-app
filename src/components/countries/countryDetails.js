@@ -11,7 +11,6 @@ import { BackButtonWrapper, BackArrowImagElement, CountryDetailsWrapper, Country
 
 
 @observer
-
 class CountryDetails extends React.Component {
     state = {
         countriesList: []
@@ -19,6 +18,7 @@ class CountryDetails extends React.Component {
     async componentDidMount() {
         try {
             let response = await fetch("https://restcountries.eu/rest/v2/all ")
+            
             let data = await response.json()
             this.setState({
                 countriesList: data
@@ -43,6 +43,7 @@ class CountryDetails extends React.Component {
         this.props.history.goBack()
     }
     render() {
+        console.log(this.props.history.location)
         const selectTheme=this.getCurrenTheme()
         //let obj = allCountries.filter(each => each.name === list.name)
         const { changeTheme } = this.props

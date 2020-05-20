@@ -15,13 +15,12 @@ function withToggle(WrappedComponent)
         }
         onToggle=()=>
         {
-            
             this.toggleStatus=!this.toggleStatus
         }
 
         render()
         {
-           console.log("hoc")
+
             return (<WrappedComponent {...this.props} toggleStatus={this.toggleStatus} 
             ontoggle={this.onToggle}/>)
            }

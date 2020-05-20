@@ -1,7 +1,6 @@
 import React from "react"
-import {observable} from "mobx";
 import {observer} from "mobx-react"
-import {withScreenSizeDetectors} from "../../hocs/withScreenSizeDetectors"
+
 import {DeviceContainer,
     Heading,ViewContainer,TextArea,DeviceType} from "./styledComponents"
 
@@ -14,7 +13,7 @@ class DisplayMouseCoordinates extends React.Component
     }
     render()
     { 
-        const {x,y,}=this.props
+        const {x,y}=this.props
         return (
             <React.Fragment>
                  <h1 class="text-3xl text-center font-bold mb-2  mt-4">Render Props Usage</h1>
