@@ -9,7 +9,6 @@ import {
 }
 from "../constants/RouteConstants";
 
-//import ProductsPage from "../../ECommerceApp/routes/ProductRoute/ProductRoute";
 
 export const ProtectedRoute = (props) => {
     const { component: Component, path } = props
