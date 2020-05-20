@@ -1,5 +1,4 @@
 import React from "react"
-import {observable} from "mobx";
 import {observer} from "mobx-react"
 import {withToggle} from "../../hocs/withToggle"
 import {CollapseExpandContainer,Heading,
@@ -13,10 +12,8 @@ class CollapseExpand  extends React.Component
         }
         render()
         {
-            console.log("CollapseExpand")
             const {toggleStatus,list,listTitle}=this.props
             return (
-            <React.Fragment>
                 <CollapseExpandContainer>
                 <Heading>CollapseExpand</Heading>
                 <ViewContainer>
@@ -27,16 +24,12 @@ class CollapseExpand  extends React.Component
                     <ExpandButton onClick={this.handleOnClick}>
                         {toggleStatus?"Collapse":"Expand"}
                     </ExpandButton>
-                    {toggleStatus?<ViewList>
-                        <ListItems>Mobile</ListItems>
-                        <ListItems>Head Phones</ListItems>
-                    </ViewList>:""}
+                    {toggleStatus&&<ViewList>
+                    {list.map(each=><ListItems>{each}</ListItems>)}
+                    </ViewList>}
                     </ListContainer>
-                   
-
                 </ViewContainer>
-
-                </CollapseExpandContainer></React.Fragment>)
+                </CollapseExpandContainer>)
          }
     }
 export default withToggle(CollapseExpand )

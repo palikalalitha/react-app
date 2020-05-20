@@ -6,13 +6,15 @@ import CountryCard from './countryCard.js'
 import { Header } from './header.js'
 //import { observable } from "mobx"
 import { observer } from "mobx-react"
-
+//import {withCountries} from "../../common/hocs/withCountries"
 import themeStore from "../../stores/ThemeStore"
+import { withCounries } from "../../common/hocs/withCountries.js"
 
 //import { CountryApp, HeaderWrapper } from './styledComponents.js'
 let regionsList = []
 let filterList = []
-@observer class CountryDashboardApp extends React.Component {
+@observer 
+class CountryDashboardApp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -91,6 +93,7 @@ let filterList = []
         regionsList = [...new Set(countriesData.map(item => item.region))]
     }
     render() {
+        //console.log(this.props,this.props.countriesList)
         const { selectTheme, changeTheme } = this.props
         const { countriesList } = this.state
         return (
@@ -114,6 +117,6 @@ let filterList = []
             </div>)
     }
 }
-export { CountryDashboardApp }
+export  default CountryDashboardApp
 const header = { marginBottom: "5px" }
 const filterBar = { padding: "20px" }

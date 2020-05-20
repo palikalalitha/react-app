@@ -24,22 +24,21 @@ import {Container,Heading2,
         }
         render()
         {
-            const {ontoggle,toggleStatus}=this.props
-            console.log(toggleStatus,"vieEditToggle")
+            const {toggleStatus}=this.props
             return (
-                <React.Fragment>
-
+                <>
                     <Heading>HOC's Usage</Heading>
                     <ViewEditToggleContainer>
                     <Heading2>ViewEditToggle</Heading2>
                     <ViewContainer>
-                       {toggleStatus? <InputBox type="text" defaultValue={this.text} onChange={this.changeText}/>:    
+                       {toggleStatus? 
+                       <InputBox type="text" defaultValue={this.text} onChange={this.changeText}/>:    
                     <TextArea>{this.text}</TextArea>}
                     <EditButton onClick={this.handleEditButton}>{toggleStatus?"Cancel":"Edit"}</EditButton>
                     </ViewContainer>
                     
                     </ViewEditToggleContainer>
-                   </React.Fragment>)
+                   </>)
          }
     }
 export default withToggle(ViewEditToggle)

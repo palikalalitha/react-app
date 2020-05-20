@@ -4,7 +4,7 @@ import { Provider } from "mobx-react"
 
 import stores from "./stores"
 import Home from "./components/home.js"
-import { CountryDashboardApp } from "./components/countries/countryDashboardApp.js"
+import  CountryDashboardApp  from "./components/countries/countryDashboardApp.js"
 import { CarsList } from './components/CarsList'
 import { Todo } from './components/todolist'
 import { TodoList } from "./components/MobxTodo/TodoList"
@@ -74,16 +74,16 @@ import "./App.css";
 //     console.log("Autorun called");
 //     console.log(newPerson.fullName);
 //   });
-class AuthStore {
-  @observable isSignedIn = false;
+// class AuthStore {
+//   @observable isSignedIn = false;
 
-  onChange() {
-    console.log("onChange isSignedIn");
-    this.isSignedIn = !this.isSignedIn;
-  }
-}
+//   onChange() {
+//     console.log("onChange isSignedIn");
+//     this.isSignedIn = !this.isSignedIn;
+//   }
+// }
 
-const authStore = new AuthStore();
+//const authStore = new AuthStore();
 
 
 class App extends React.Component {
@@ -118,8 +118,7 @@ class App extends React.Component {
 
                     <Route path="/bits">
                     <NavBar title="Bits"/>
-                    <Bits authStore={authStore
-                    }/>
+                    <Bits />
                     </Route>
                     <Route exact path="/login" component={LoginPage}/>
                     <Route path="/grid-game">
