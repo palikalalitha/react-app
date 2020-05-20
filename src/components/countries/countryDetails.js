@@ -44,6 +44,7 @@ class CountryDetails extends React.Component {
     }
     render() {
         const selectTheme=this.getCurrenTheme()
+        //let obj = allCountries.filter(each => each.name === list.name)
         const { changeTheme } = this.props
         const { state } = this.props.history.location
         const allCountries = this.state.countriesList
