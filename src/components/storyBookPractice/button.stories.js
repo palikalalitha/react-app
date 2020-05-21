@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import Button from './Button';
 
 export default {
-  component: Button,
+  ///component: Button,
   title: 'Button',
 };
 
