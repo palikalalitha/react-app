@@ -1,6 +1,6 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text,color } from '@storybook/addon-knobs'
 
 import '../../../styles/tailwind.css'
 import FailureView from './FailureView'
@@ -21,7 +21,7 @@ export const withOnRetryAndErrorMessageProp = () => (
 
 export const knobs = () => (
    <FailureView
-      errorMessage={text('errorMessage', 'failed message')}
+      errorMessage={color('errorMessage', 'failed message')}
       onRetryClick={action('retry clicked')}
    />
 )

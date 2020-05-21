@@ -7,4 +7,4 @@ export const NoDataViewContainer = styled.div`
 
 export const NoDataViewText = styled.p`
   ${tw` text-center text-xl`}
-`;
+color:${props=>props.color}`;
