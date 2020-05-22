@@ -5,6 +5,7 @@ import { ProductSort } from "../ProductSort/index"
 import { toast, ToastContainer } from 'react-toastify';
 
 import { ProductListContainer, ProductSortView, ProductContainer } from "./styledComponents.js"
+import Pagination from "../../../common/components/PaginationButton/Pagination";
 
 class ProductList extends React.Component {
     render() {
@@ -12,11 +13,12 @@ class ProductList extends React.Component {
         return (
             <ProductListContainer>
                     {productList.map(eachProduct=>
-                    <Product onClickAddToCart={onClickAddToCart} 
-                    productItem={eachProduct} key={eachProduct.productId}/>
+                    <Product key={Math.random()} onClickAddToCart={onClickAddToCart} 
+                    productItem={eachProduct} />
                     )}
                    <ToastContainer/> 
             </ProductListContainer>
+           
         )
     }
 

@@ -12,10 +12,10 @@ class ProductService {
             baseURL: URL
         });
     }
-    getProductsAPI() {
+    getProductsAPI(limit,offset) {
         return networkCallWithApisauce(
             this.api,
-            endPoints.productListEndpoint, {},
+            `ecommerce/products?limit=${limit}&offset=${offset}`, {},
             apiMethods.get
 
         );

@@ -14,9 +14,14 @@ import {
 
 }
 from "./styledComponents.js"
+import Pagination from "../../../common/components/PaginationButton/Pagination"
 
 @observer
 class ProductsPage extends React.Component {
+    onClickToChangePages=()=>
+    {
+        console.log("hii")
+    }
     render() {
         const {
             onSelectSize,
@@ -29,7 +34,7 @@ class ProductsPage extends React.Component {
             sizeFilter,
             totalNoOfProductsDisplayed,
             getProductListAPIError,
-
+            totalPages
 
         } = this.props
         const productsCount = totalNoOfProductsDisplayed
@@ -44,6 +49,8 @@ class ProductsPage extends React.Component {
                           <LoadingWrapperWithFailure apiStatus={getProductListAPIStatus}
                             apiError={getProductListAPIError} onRetryClick={doNetworkCalls}
                             renderSuccessUI={renderSuccessUI}/>
+                            <Pagination currentPage={1}
+                             totalPages={totalPages} onClickToChangePage={this.onClickToChangePages}/> 
                     </Products>
                 </ProductsContainer>
             </EcommerceContainer>)

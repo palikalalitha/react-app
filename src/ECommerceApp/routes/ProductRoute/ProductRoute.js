@@ -24,7 +24,6 @@ class ProductRoute extends React.Component {
     }
     onClickSignOut = () => {
         const { history } = this.props
-        // this.props.productStore.init()
         this.props.authStore.userSignOut()
         history.replace("/ecommerce-store/sign-in/")
     }
@@ -38,19 +37,19 @@ class ProductRoute extends React.Component {
     }
     renderSuccessUI = observer(() => {
         const productsCount = this.props.productStore.totalNoOfProductsDisplayed
-        console.log(this.getProducts())
-        return <div>
-        <ProductList onClickAddToCart={this.addCart} 
+
+        return (<ProductList onClickAddToCart={this.addCart} 
                      onSelectSortBy={this.onSelectSortBy} productsCount={productsCount} 
-                     productList={this.getProducts()}/>
-                     </div>
+                     productList={this.getProducts()}/>)
+                   
 
     })
     render() {
         const { cartStore } = this.props
-        const { sizeFilter, getProductListAPIStatus, getProductListAPIError, totalNoOfProductsDisplayed } = this.props.productStore
+        const { sizeFilter, getProductListAPIStatus,totalPages, getProductListAPIError, totalNoOfProductsDisplayed } = this.props.productStore
         return (
             <ProductsPage 
+            totalPages={totalPages}
         onSelectSize = { this.onSelectSize }
         onClickSignOut = { this.onClickSignOut }
         doNetworkCalls={this.doNetworkCalls}

@@ -8,7 +8,7 @@ class ProductSort extends React.Component {
         const options=["ASCENDING","DESCENDING"]
         return (
             <div>
-                <SelectElement status={this.props.status} label="Sort Price by" 
+                <SelectElement key={Math.random()} status={this.props.status} label="Sort Price by" 
                 onSelectSortBy={this.props.onSelectSortBy} options={options} />
            </div>)
     }

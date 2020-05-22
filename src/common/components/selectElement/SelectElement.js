@@ -5,7 +5,7 @@ class SelectElement extends Component {
     {
         const {options}=this.props
         return options.map(eachOption=>
-         {return <Options>{eachOption}</Options>})
+         {return <Options key={eachOption}>{eachOption}</Options>})
     }
     onClickSort = (event) => {
         const { onSelectSortBy } = this.props
@@ -17,7 +17,7 @@ class SelectElement extends Component {
             <React.Fragment>
                 <Label>{label}:</Label>
                 <SelectContainer 
-                    disabled={status!==200?"true":""}
+                    disabled={status!==200?true:""}
                     onChange={this.onClickSort}>
                         <option  value="select">Select</option>
                         {this.renderOptions()}

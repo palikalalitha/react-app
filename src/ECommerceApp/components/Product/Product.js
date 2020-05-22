@@ -1,8 +1,5 @@
 import React from "react"
 import { useToasts } from 'react-toast-notifications'
-
-import LazyLoad from 'react-lazyload';
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -44,25 +41,23 @@ class Product extends React.Component {
         } = productItem
         const installment = (price / installments).toFixed(2)
         return (
-            <LazyLoad height={20}> 
-            <Products >
-            {isFreeShipping?<FreeShippingView>Free shipping</FreeShippingView>:""}
-            <ProductImageElement src={image} alt={title}/>
-                    <ProductTitle>{title}</ProductTitle>
-                    <ProductPriceView>
+            <Products>
+                {isFreeShipping?<FreeShippingView>Free shipping</FreeShippingView>:""}
+                <ProductImageElement src={image} alt={title}/>
+                <ProductTitle>{title}</ProductTitle>
+                <ProductPriceView>
                         <ProductCurrency>{currencyFormat}</ProductCurrency>
                         <ProductPrice>{price}
                         </ProductPrice>
-                    </ProductPriceView>
-                    <InstallmentsView>
+                </ProductPriceView>
+                <InstallmentsView>
                   {installments!=0? `or ${installments} x 
-                  ${currencyFormat} ${installment}`:""}</InstallmentsView>
-                    <AddCartButton onClick={this.addToCart}>
+                  ${currencyFormat} ${installment}`:""}
+                </InstallmentsView>
+                <AddCartButton onClick={this.addToCart}>
                     Add to cart 
-                    </AddCartButton>
-                 
-                   </Products>
-         </LazyLoad>)
+                </AddCartButton>
+            </Products>)
     }
 
 }

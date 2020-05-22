@@ -10,22 +10,31 @@ class ProductStore {
     @observable getProductListAPIError;
     @observable sizeFilter;
     @observable sortBy;
+    @observable currentPage;
+    @observable totalPages;
+   pageLimit=3;
+    offset=0;
     productsAPIService
     constructor(productService) {
         this.productsAPIService = productService
         this.init()
+        this.currentPage=Math.round(this.pageLimit/this.totalPages)
+        console.log(this.currentPage)
     }
     init() {
         this.getProductListAPIStatus = API_INITIAL
         this.getProductListAPIError = null
         this.productList = []
         this.sizeFilter = [],
+        this.currentPage="",
+        this.totalPages="",
         this.sortBy = "select"
     }
 
     @action.bound
     getProductList() {
-        const userResponse = this.productsAPIService.getProductsAPI()
+        
+        const userResponse = this.productsAPIService.getProductsAPI(this.pageLimit,this.offset)
         return bindPromiseWithOnSuccess(userResponse)
             .to(this.setGetProductListAPIStatus, this.setProductListResponse)
             .catch(this.setGetProductListAPIError)
@@ -33,9 +42,10 @@ class ProductStore {
 
     @action.bound
     setProductListResponse(response) {
-        this.productList = response.map(eachProduct => { 
+        this.totalPages=response.total
+        this.productList = response.products.map(eachProduct => { 
             return new Product(eachProduct) })
-
+           
     }
     @action.bound
     setGetProductListAPIError(error) {
@@ -46,7 +56,17 @@ class ProductStore {
     setGetProductListAPIStatus(status) {
         this.getProductListAPIStatus = status
     }
-
+    @action.bound
+    navigateNextPage=()=>
+    {
+        this.currentPage++
+    }
+    @action.bound
+    navigatePrevPage=()=>
+    {
+        this.currentPage--
+    }
+    
     @action.bound
     onChangeSortBy(order) {
         this.sortBy = order
@@ -87,6 +107,7 @@ class ProductStore {
     get totalNoOfProductsDisplayed() {
         return this.sortedAndFilteredProducts.length
     }
+
 
 }
 export default ProductStore
