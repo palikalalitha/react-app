@@ -8,7 +8,7 @@ import { SignInPage } from "../Authentication/components/SignInPage"
 
 export default {
     //component:SignInPage,
-    title:"Button/SigninPage/buttons"
+    title:"SampleButtons"
 }
 export const defaultView = () => <Submit>Sign in</Submit> 
 export const SignInButtonWithProps = () => 

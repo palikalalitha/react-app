@@ -4,23 +4,13 @@ import { observer } from "mobx-react"
 
 import { LoginContainer, Form, UserName, Password, Submit, Heading, ErrorMessage } from "./styledComponents.js"
 import CookieConsent from "react-cookie-consent";
-// function Display(props)
-// {
-//     return<div>
-//         {props.children}
-//     </div>
-// }
+import { InputElement } from "../../../common/components/InputFormElements/index.js";
+import Buttons from "../../../common/components/ButtonsElement/Buttons.js";
 @observer
 class SignInPage extends React.Component {
     userNameRef=React.createRef();
     passwordRef=React.createRef();
-componentDidMount()
-{
-    //this.props.siginPageRef.current.userNameRef.current.focus()
-     
-    //this.userNameRef.current.focus();
-   // tis.passwordRef.current.focus();
-}
+    inputElementRef=React.createRef()
     render() {
         const {
             apiStatus,
@@ -41,21 +31,36 @@ componentDidMount()
                     <Heading>
                         Sign in
                     </Heading>
-                    <UserName ref={this.userNameRef}
+                    <InputElement ref={this.inputElementRef}
+                        placeholder="Username" 
+                        type="text"
+                        value={username} 
+                        onChange={onChangeUsername} />
+                    {/* <UserName        ref={this.userNameRef}
                         placeholder="Username" 
                         type="text"
                         defaultValue={username} 
-                        onChange={onChangeUsername} />
-                    <Password  ref={this.passwordRef}
+                        onChange={onChangeUsername} /> */}
+
+                        <InputElement ref={this.passwordRef}
+                        placeholder="Password" 
+                        type="password"
+                        value={password} 
+                        onChange={onChangePassword} />
+                    {/* <Password  ref={this.passwordRef}
                         type="password" 
                         placeholder="Password"  
                         defaultValue={password}
-                        onChange={onChangePassword}/>
-                    <Submit  disabled={apiStatus===100?true:false}
+                        onChange={onChangePassword}/> */}
+                        <Buttons disabled={apiStatus===100?true:false}
+                        text="Sign in"
+                        data="sign-in-button"
+                        onClick={onClickSignIn}/>
+                    {/* <Submit  disabled={apiStatus===100?true:false}
                         text="Sign in"
                         data-testid="sign-in-button"
                         onClick={onClickSignIn}>Sign in
-                    </Submit>
+                    </Submit> */}
                     <ErrorMessage status={errorMessage}>{errorMessage}</ErrorMessage>
                       </Form>
              </LoginContainer>

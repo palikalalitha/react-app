@@ -10,11 +10,11 @@ import { ProductSort } from "../ProductSort/index"
 @observer
 class Header extends React.Component {
     render() {
-        const { productsCount, onSelectSortBy } = this.props
+        const { productsCount, onSelectSortBy ,status} = this.props
         return (
             <ProductSortView>
                      <h1>{productsCount} Product(s) found.</h1>
-                     <ProductSort onSelectSortBy={onSelectSortBy}/>
+                     <ProductSort status={status} onSelectSortBy={onSelectSortBy}/>
                 </ProductSortView>
         )
 

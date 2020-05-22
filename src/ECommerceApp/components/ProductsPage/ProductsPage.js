@@ -40,7 +40,7 @@ class ProductsPage extends React.Component {
                 <ProductsContainer>
                     <SizeFilter onSelectSize={onSelectSize} sizeFilter={sizeFilter}/>
                     <Products>
-                        <Header productsCount={productsCount} onSelectSortBy={onSelectSortBy}/>
+                        <Header productsCount={productsCount} status={getProductListAPIStatus} onSelectSortBy={onSelectSortBy}/>
                           <LoadingWrapperWithFailure apiStatus={getProductListAPIStatus}
                             apiError={getProductListAPIError} onRetryClick={doNetworkCalls}
                             renderSuccessUI={renderSuccessUI}/>

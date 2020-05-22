@@ -1,26 +1,16 @@
 import React from "react"
 
-import { Heading, SelectContainer, Options } from "./styledComponents.js"
+import { Heading, Options } from "./styledComponents.js"
+import SelectElement from "../../../common/components/selectElement/SelectElement.js"
+
 class ProductSort extends React.Component {
-    onClickSort = (event) => {
-        const { onSelectSortBy } = this.props
-        onSelectSortBy(event.target.value)
-    }
     render() {
+        const options=["ASCENDING","DESCENDING"]
         return (
             <div>
-            <Heading>Sort price by:
-            <SelectContainer onChange={this.onClickSort}>
-                <option   value="select">Select</option>
-                <Options  value="ASCENDING">
-                Lowest to highest
-                </Options>
-                 <Options  value="DESCENDING">
-                 Highest to lowest
-                </Options>
-            </SelectContainer>
-            </Heading>
-            </div>)
+                <SelectElement status={this.props.status} label="Sort Price by" 
+                onSelectSortBy={this.props.onSelectSortBy} options={options} />
+           </div>)
     }
 
 }
