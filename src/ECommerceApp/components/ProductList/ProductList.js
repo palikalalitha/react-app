@@ -5,7 +5,6 @@ import { ProductSort } from "../ProductSort/index"
 import { toast, ToastContainer } from 'react-toastify';
 
 import { ProductListContainer, ProductSortView, ProductContainer } from "./styledComponents.js"
-import Pagination from "../../../common/components/PaginationButton/Pagination";
 
 class ProductList extends React.Component {
     render() {

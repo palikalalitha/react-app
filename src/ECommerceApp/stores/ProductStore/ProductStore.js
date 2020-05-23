@@ -12,28 +12,26 @@ class ProductStore {
     @observable sortBy;
     @observable currentPage;
     @observable totalPages;
-   pageLimit=3;
+    pageLimit=4;
     offset=0;
     productsAPIService
     constructor(productService) {
         this.productsAPIService = productService
         this.init()
-        this.currentPage=Math.round(this.pageLimit/this.totalPages)
-        console.log(this.currentPage)
+        //this.currentPage=Math.round(this.pageLimit/this.totalPages)
     }
     init() {
         this.getProductListAPIStatus = API_INITIAL
         this.getProductListAPIError = null
         this.productList = []
         this.sizeFilter = [],
-        this.currentPage="",
+        this.currentPage=1,
         this.totalPages="",
         this.sortBy = "select"
     }
 
     @action.bound
     getProductList() {
-        
         const userResponse = this.productsAPIService.getProductsAPI(this.pageLimit,this.offset)
         return bindPromiseWithOnSuccess(userResponse)
             .to(this.setGetProductListAPIStatus, this.setProductListResponse)
@@ -42,9 +40,10 @@ class ProductStore {
 
     @action.bound
     setProductListResponse(response) {
-        this.totalPages=response.total
+        this.totalPages=Math.ceil(response.total/this.pageLimit)
         this.productList = response.products.map(eachProduct => { 
             return new Product(eachProduct) })
+           
            
     }
     @action.bound
@@ -59,12 +58,34 @@ class ProductStore {
     @action.bound
     navigateNextPage=()=>
     {
-        this.currentPage++
+        
+        if(this.currentPage<=this.totalPages)
+        {
+        this.currentPage++;
+       this.offset+=this.pageLimit
+        this.getProductList();
+        }
+        else
+        {
+            this.init()
+        }
+
     }
     @action.bound
     navigatePrevPage=()=>
     {
-        this.currentPage--
+        
+        if(this.currentPage>1)
+        {
+        this.currentPage--;
+        this.offset-=this.pageLimit
+        this.getProductList();
+        }
+        else
+        {
+            this.init()
+        }
+     
     }
     
     @action.bound

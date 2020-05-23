@@ -46,7 +46,7 @@ class ProductRoute extends React.Component {
     })
     render() {
         const { cartStore } = this.props
-        const { sizeFilter, getProductListAPIStatus,totalPages, getProductListAPIError, totalNoOfProductsDisplayed } = this.props.productStore
+        const { sizeFilter,navigatePrevPage, getProductListAPIStatus,totalPages, navigateNextPage,currentPage,getProductListAPIError, totalNoOfProductsDisplayed } = this.props.productStore
         return (
             <ProductsPage 
             totalPages={totalPages}
@@ -59,6 +59,9 @@ class ProductRoute extends React.Component {
          getProductListAPIStatus={getProductListAPIStatus}
          getProductListAPIError={getProductListAPIError}
          cartStore={cartStore}
+         currentPage={currentPage}
+         navigateNextPage={navigateNextPage}
+         navigatePrevPage={navigatePrevPage}
          totalNoOfProductsDisplayed={totalNoOfProductsDisplayed}/>)
     }
 
