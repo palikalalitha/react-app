@@ -58,33 +58,25 @@ class ProductStore {
     @action.bound
     navigateNextPage=()=>
     {
-        
-        if(this.currentPage<=this.totalPages)
+        if(this.currentPage<this.totalPages)
         {
-        this.currentPage++;
-       this.offset+=this.pageLimit
-        this.getProductList();
+            this.currentPage++;
+            this.offset+=this.pageLimit
+            this.getProductList();
         }
-        else
-        {
-            this.init()
-        }
+    
 
     }
     @action.bound
     navigatePrevPage=()=>
     {
-        
         if(this.currentPage>1)
         {
         this.currentPage--;
         this.offset-=this.pageLimit
         this.getProductList();
         }
-        else
-        {
-            this.init()
-        }
+
      
     }
     

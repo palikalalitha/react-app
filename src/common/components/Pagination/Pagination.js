@@ -12,13 +12,12 @@ class Pagination extends Component {
                     isDisabled={currentPage===1} 
                     pageHandler={navigatePrevPage} 
                     imageUrl={leftArrow}/>
-
                     <PrevPageNumber>{currentPage}</PrevPageNumber>
                     <Separator>/</Separator>
                     <p>{totalPages}</p>
                     <PaginationButton isDisabled={currentPage===totalPages}
                      pageHandler={navigateNextPage} imageUrl={rightArrow}/>
-            
+
             </PaginationContainer>
         );
     }

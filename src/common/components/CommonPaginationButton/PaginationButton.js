@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {PaginationButtons,PaginationArrows} from "./styledComponents"
+import {FaGreaterThan} from "react-icons/fa";
 class PaginationButton extends Component {
     render() {
         const {isDisabled,imageUrl,pageHandler}=this.props
@@ -7,6 +8,7 @@ class PaginationButton extends Component {
             <PaginationButtons 
             isDisabled={isDisabled} 
                     onClick={pageHandler}>
+                        {/* <FaGreaterThan/> */}
             <PaginationArrows src={imageUrl}></PaginationArrows>
                 </PaginationButtons>
         );
